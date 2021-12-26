@@ -1,0 +1,25 @@
+div .category-label {
+  background: rgb(96, 191, 255);
+  border-radius: 5px;
+  padding: 0 5px 0 5px;
+  color: white;
+  margin: 0 5px 0 5px;
+  min-width: 75px;
+  text-align: center;
+  margin-left: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.category-label.green {
+  background: rgb(139, 195, 74);
+}
+
+.category-label.grey {
+  background: rgb(176, 190, 197);
+}
+
+.category-label.purple {
+  background: rgb(186, 104, 200);
+}

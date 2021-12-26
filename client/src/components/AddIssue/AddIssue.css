@@ -1,0 +1,113 @@
+:root {
+  --label-width: 100%;
+  --select-width: 220px;
+  --form-item-height: 30px;
+  --form-item-border-color: lightgrey;
+}
+
+.add-issue {
+  width: 50%;
+  min-height: 100px;
+  margin: auto;
+  background-color: white;
+  padding: 50px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+form label {
+  display: block;
+  margin-top: 20px;
+}
+
+form input,
+form select,
+form button {
+  padding: 16px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--form-item-border-color);
+}
+
+form input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+form select {
+  width: var(--select-width);
+}
+
+hr {
+  display: flex;
+}
+
+.buttons {
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: row;
+}
+
+form input.add {
+  font-weight: bold;
+  margin-right: 10px;
+  border: none;
+  color: white;
+  background-color: dodgerblue;
+  cursor: pointer;
+}
+
+form input.add:hover {
+  box-shadow: 0 0 5px rgba(91, 173, 255, 0.8);
+}
+
+form input.cancel {
+  font-weight: bold;
+  color: dodgerblue;
+  background-color: white;
+  border: 1px solid var(--form-item-border-color);
+  cursor: pointer;
+}
+
+form input.cancel:hover {
+  box-shadow: 0 0 5px rgba(224, 224, 224, 0.8);
+}
+
+label span {
+  color: grey;
+  font-style: italic;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-main {
+  position: fixed;
+  background: white;
+  width: 80%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  margin: auto;
+  padding: 50px;
+  border-radius: 5px;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}

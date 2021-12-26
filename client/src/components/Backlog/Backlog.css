@@ -1,0 +1,36 @@
+:root {
+  --form-item-border-color: lightgrey;
+}
+
+div .backlog {
+  background: rgb(240, 240, 240);
+  padding: 20px;
+  border-radius: 5px;
+  width: 70%;
+  margin: 40px auto;
+}
+
+div .backlog-title {
+  font-weight: bolder;
+  font-size: 20px;
+  margin: 0 0 20px 0;
+}
+
+button.create-issue {
+  font-weight: bold;
+  margin-right: 10px;
+  border: none;
+  color: white;
+  background-color: rgb(30, 144, 255);
+  cursor: pointer;
+  padding: 6px;
+  margin: 10px 0 0 auto;
+  border-radius: 5px;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+button.create-issue:hover {
+  box-shadow: 0 0 5px rgba(91, 173, 255, 0.8);
+}
