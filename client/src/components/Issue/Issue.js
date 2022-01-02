@@ -8,9 +8,11 @@ function Issue(props) {
   return (
     <div className={classNames("issue", props.selected ? "active" : undefined)}>
       <PriorityLabel priority={props.priority} />
-      <a href={props.link}>{props.id}</a>
+      <a
+        href={`${props.project}-${props.id}`}
+      >{`${props.project}-${props.id}`}</a>
       <div className="issue-title">{props.title}</div>
-      <CategoryLabel name={props.category} color={props.color}/>
+      <CategoryLabel name={props.category} color={props.color} />
       <Avatar></Avatar>
     </div>
   );

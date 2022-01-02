@@ -37,7 +37,7 @@ form input {
 }
 
 form select {
-  width: var(--select-width);
+  width: 100%;
 }
 
 hr {

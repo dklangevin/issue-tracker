@@ -1,0 +1,11 @@
+div .project-category {
+  display: flex;
+}
+
+div .project-category div:nth-child(2) {
+  margin-left: 10px;
+}
+
+div .project-category div {
+  flex-grow: 1;
+}

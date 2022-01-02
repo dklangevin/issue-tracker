@@ -2,71 +2,53 @@ import "./Backlog.css";
 import Issue from "../Issue/Issue";
 import { ReactComponent as PlusIcon } from "../../assets/icons/add_black_24dp.svg";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import AddIssue from "../AddIssue/AddIssue";
+import DragAndDropList from "../DragAndDropList/DragAndDropList";
 
 function Backlog(props) {
   const [hidden, setHidden] = useState(true);
 
+  const [issues, setIssues] = useState([]);
+
+  const issuesEndpoint = "http://localhost:5000/issues";
+
+  async function getIssues() {
+    const res = await fetch(issuesEndpoint);
+    const issueArray = await res.json();
+    setIssues(issueArray);
+  }
+
+  async function handleAdd() {
+    setHidden(true);
+    await getIssues();
+  }
+
+  useEffect(() => {
+    getIssues();
+  }, []);
+
   return (
     <div className="backlog">
       <div className="backlog-title">Backlog</div>
-      <Issue
-        title="This is an example issue used for testing"
-        priority="LOW"
-        id="ISSUE-42"
-        link="ISSUE-42"
-        category="User Interface"
-        selected
-      ></Issue>
-      <Issue
-        title="This is an example issue used for testing"
-        priority="MEDIUM"
-        id="ISSUE-43"
-        link="ISSUE-43"
-        category="Database"
-        color="green"
-      ></Issue>
-      <Issue
-        title="This is an example issue used for testing"
-        priority="HIGH"
-        id="ISSUE-44"
-        link="ISSUE-44"
-        category="Database"
-        color="green"
-      ></Issue>
-      <Issue
-        title="This is an example issue used for testing"
-        priority="CRITICAL"
-        id="ISSUE-45"
-        link="ISSUE-45"
-        category="Algorithm"
-        color="grey"
-      ></Issue>
-      <Issue
-        title="This is an example issue used for testing"
-        priority="CRITICAL"
-        id="ISSUE-46"
-        link="ISSUE-46"
-        category="Algorithm"
-        color="grey"
-      ></Issue>
-      <Issue
-        title="This is an example issue used for testing"
-        priority="CRITICAL"
-        id="ISSUE-47"
-        link="ISSUE-47"
-        category="Design"
-        color="purple"
-      ></Issue>
+      <DragAndDropList items={issues}></DragAndDropList>
+      {/* {issues.map((issue) => (
+        <Issue
+          title={issue.title}
+          id={issue.id}
+          project={issue.project}
+          category={issue.category}
+          priority={issue.priority}
+        />
+      ))} */}
       <button className="create-issue" onClick={() => setHidden(false)}>
         <PlusIcon fill="white" />
         Create Issue
       </button>
       <AddIssue
         hidden={hidden}
-        handleAdd={() => setHidden(true)}
+        handleAdd={handleAdd}
         handleCancel={() => setHidden(true)}
       />
     </div>
