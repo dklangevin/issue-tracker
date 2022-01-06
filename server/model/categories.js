@@ -1,85 +1,38 @@
-const pool = require("../db");
+import pool from '../database.js';
 
-// get all categories
-const getAllCategories = async (req, res) => {
-  try {
-    const categories = await pool.query("SELECT * FROM categories");
-    res.json(categories.rows);
-  } catch (err) {
-    console.error(err.message);
-  }
+export const getCategories = async () => {
+  const query = 'SELECT * FROM categories';
+  const { rows } = await pool.query(query);
+  return rows;
 };
 
-// get a category
-const getCategory = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const todo = await pool.query("SELECT * FROM categories WHERE id=$1", [id]);
-    res.json(todo.rows[0]);
-  } catch (err) {
-    console.error(err.message);
-  }
+export const getCategoryById = async (id) => {
+  const query = 'SELECT * FROM categories WHERE id=$1';
+  const { rows } = await pool.query(query, [id]);
+  return rows[0];
 };
 
-// get a category
-const getCategoriesByProject = async (req, res) => {
-  try {
-    const { projectId } = req.params;
-    const categories = await pool.query(
-      "SELECT * FROM categories WHERE project_id=$1",
-      [projectId]
-    );
-    res.json(categories.rows);
-  } catch (err) {
-    console.error(err.message);
-  }
+export const getCategoriesByProjectId = async (projectId) => {
+  const query = 'SELECT * FROM categories WHERE project_id=$1';
+  const { rows } = await pool.query(query, [projectId]);
+  return rows;
 };
 
-// create a category
-const createCategory = async (req, res) => {
-  try {
-    const { title, description, priority, category } = req.body;
-    const newCategory = await pool.query(
-      "INSERT INTO categories(title, description, priority, category) VALUES ($1, $2, $3, $4)",
-      [title, description, priority, category]
-    );
-    res.json(newCategory);
-  } catch (err) {
-    console.error(err.message);
-  }
+export const createCategory = async (issue) => {
+  const { title, description, priority, category } = issue;
+  const query =
+    'INSERT INTO categories(title, description, priority, category) VALUES ($1, $2, $3, $4)';
+  await pool.query(query, [title, description, priority, category]);
 };
 
-// update an project
-const updateCategory = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { title, project, description } = req.body;
-    const todo = await pool.query(
-      "UPDATE categories SET title=$1, project=$2, description=$3 WHERE id=$4",
-      [title, project, description, id]
-    );
-    res.json(todo.rows[0]);
-  } catch (err) {
-    console.error(err.message);
-  }
+export const updateCategory = async (id, category) => {
+  const { title, project, description } = category;
+  const query =
+    'UPDATE categories SET title=$1, project=$2, description=$3 WHERE id=$4';
+  await pool.query(query, [title, project, description, id]);
 };
 
-// delete an project
-const deleteCategory = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const todo = await pool.query("DELETE FROM categories WHERE id=$1", [id]);
-    res.json(todo.rows[0]);
-  } catch (err) {
-    console.error(err.message);
-  }
-};
-
-module.exports = {
-  getAllCategories,
-  getCategory,
-  getCategoriesByProject,
-  createCategory,
-  updateCategory,
-  deleteCategory,
+export const deleteCategory = async () => {
+  const query = 'DELETE FROM categories WHERE id=$1';
+  await pool.query(query, [id]);
 };

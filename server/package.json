@@ -1,6 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,6 +16,7 @@
     "epxress": "^0.0.1-security",
     "express": "^4.17.2",
     "nodemon": "^2.0.15",
-    "pg": "^8.7.1"
+    "pg": "^8.7.1",
+    "sequelize": "^7.0.0-alpha.4"
   }
 }

@@ -1,18 +1,18 @@
-import "./Backlog.css";
-import Issue from "../Issue/Issue";
-import { ReactComponent as PlusIcon } from "../../assets/icons/add_black_24dp.svg";
+import './Backlog.css';
+import Issue from '../Issue/Issue';
+import { ReactComponent as PlusIcon } from '../../assets/icons/add_black_24dp.svg';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-import AddIssue from "../AddIssue/AddIssue";
-import DragAndDropList from "../DragAndDropList/DragAndDropList";
+import AddIssue from '../AddIssue/AddIssue';
+import DragAndDropList from '../DragAndDropList/DragAndDropList';
 
 function Backlog(props) {
   const [hidden, setHidden] = useState(true);
 
   const [issues, setIssues] = useState([]);
 
-  const issuesEndpoint = "http://localhost:5000/issues";
+  const issuesEndpoint = '/api/issues';
 
   async function getIssues() {
     const res = await fetch(issuesEndpoint);
@@ -30,20 +30,11 @@ function Backlog(props) {
   }, []);
 
   return (
-    <div className="backlog">
-      <div className="backlog-title">Backlog</div>
+    <div className='backlog'>
+      <div className='backlog-title'>Backlog</div>
       <DragAndDropList items={issues}></DragAndDropList>
-      {/* {issues.map((issue) => (
-        <Issue
-          title={issue.title}
-          id={issue.id}
-          project={issue.project}
-          category={issue.category}
-          priority={issue.priority}
-        />
-      ))} */}
-      <button className="create-issue" onClick={() => setHidden(false)}>
-        <PlusIcon fill="white" />
+      <button className='create-issue' onClick={() => setHidden(false)}>
+        <PlusIcon fill='white' />
         Create Issue
       </button>
       <AddIssue

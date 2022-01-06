@@ -1,16 +1,17 @@
-import "./AddIssue.css";
-import classNames from "classnames";
-import { useState, useEffect } from "react";
-import Input from "../Input/Input";
-import ProjectCategorySelect from "../ProjectCategorySelect/ProjectCategorySelect";
-import Select from "../Select/Select";
+import './AddIssue.css';
+import classNames from 'classnames';
+import { useState, useEffect } from 'react';
+import Input from '../Input/Input';
+import ProjectCategorySelect from '../ProjectCategorySelect/ProjectCategorySelect';
+import Select from '../Select/Select';
 
 function AddIssue(props) {
-
   const [issue, setIssue] = useState({
-    project: "None",
-    assignee: "None",
-    category: "None",
+    project: 'None',
+    title: '',
+    description: '',
+    assignee: 'None',
+    category: 'None',
   });
 
   const [projects, setProjects] = useState([]);
@@ -18,23 +19,28 @@ function AddIssue(props) {
   const [priorities, setPriorities] = useState([]);
   const [users, setUsers] = useState([]);
 
-  const addIssueEndpoint = "http://localhost:5000/issues";
-  const projectsEndpoint = "http://localhost:5000/projects";
-  const categoriesEndpoint = "http://localhost:5000/categories/";
-  const prioritiesEndpoint = "http://localhost:5000/priorities";
-  const usersEndpoint = "http://localhost:5000/users";
+  const endpoints = {
+    createIssue: '/api/issues',
+    getProjects: '/api/projects',
+    getCategories: '/api/categories/project/',
+    getPriorities: '/api/priorities',
+    getUsers: '/api/users',
+  };
 
   async function onAddIssue(e) {
     e.preventDefault();
     try {
-      const body = {
+      const newIssue = {
         ...issue,
         project: getProjectId(issue.project),
         category: getCategoryId(issue.category),
       };
-      await fetch(addIssueEndpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const body = {
+        issue: newIssue,
+      };
+      await fetch(endpoints.createIssue, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });
     } catch (err) {
@@ -44,19 +50,19 @@ function AddIssue(props) {
   }
 
   function getProjectId(projectName) {
-    return projects.filter((project) => project["name"] === projectName)?.[0]?.[
-      "id"
+    return projects.filter((project) => project['name'] === projectName)?.[0]?.[
+      'id'
     ];
   }
 
   function getCategoryId(categoryName) {
     return categories.filter(
-      (category) => category["name"] === categoryName
-    )?.[0]?.["id"];
+      (category) => category['name'] === categoryName
+    )?.[0]?.['id'];
   }
 
   async function getProjects() {
-    const res = await fetch(projectsEndpoint);
+    const res = await fetch(endpoints.getProjects);
     const projectsArray = await res.json();
     setProjects(projectsArray);
   }
@@ -64,7 +70,7 @@ function AddIssue(props) {
   async function getCategories(project_id) {
     let categoriesArray;
     if (project_id !== undefined) {
-      const res = await fetch(`${categoriesEndpoint}${project_id}`);
+      const res = await fetch(`${endpoints.getCategories}${project_id}`);
       categoriesArray = await res.json();
     } else {
       categoriesArray = [];
@@ -73,13 +79,13 @@ function AddIssue(props) {
   }
 
   async function getPriorities() {
-    const res = await fetch(prioritiesEndpoint);
+    const res = await fetch(endpoints.getPriorities);
     const prioritiesArray = await res.json();
     setPriorities(prioritiesArray);
   }
 
   async function getUsers() {
-    const res = await fetch(usersEndpoint);
+    const res = await fetch(endpoints.getUsers);
     const usersArray = await res.json();
     setUsers(usersArray);
   }
@@ -91,23 +97,21 @@ function AddIssue(props) {
     getUsers();
   }, []);
 
-  console.log(issue);
-
   return (
     <div
       className={classNames(
-        "add-issue",
-        "modal",
-        props.hidden ? "display-none" : "display-block"
+        'add-issue',
+        'modal',
+        props.hidden ? 'display-none' : 'display-block'
       )}
     >
-      <section className="modal-main">
-        <h1 className="title">Add Issue</h1>
+      <section className='modal-main'>
+        <h1 className='title'>Add Issue</h1>
         <hr />
         <form onSubmit={onAddIssue}>
           <Input
-            title="Title"
-            placeholder="Issue title"
+            title='Title'
+            placeholder='Issue title'
             required={true}
             value={issue.title}
             onChange={(e) => {
@@ -115,9 +119,9 @@ function AddIssue(props) {
             }}
           />
           <Input
-            title="Description"
-            id="description"
-            placeholder="Issue description"
+            title='Description'
+            id='description'
+            placeholder='Issue description'
             value={issue.description}
             onChange={(e) => {
               setIssue({ ...issue, description: e.target.value });
@@ -137,33 +141,33 @@ function AddIssue(props) {
             }}
           />
           <Select
-            title="Assignee"
+            title='Assignee'
             value={issue.assignee}
             onChange={(e) => {
               setIssue({ ...issue, assignee: e.target.value });
             }}
             data={users.map((user) => user.display_name)}
-            defaultOption="None"
+            defaultOption='None'
           />
           <Select
-            title="Priority"
+            title='Priority'
             value={issue.priority}
             onChange={(e) => {
               setIssue({ ...issue, priority: e.target.value });
             }}
             data={priorities.map((priority) => priority.name)}
           />
-          <div id="buttons" className="buttons">
+          <div id='buttons' className='buttons'>
             <input
-              className="add"
-              type="submit"
-              value="Add"
+              className='add'
+              type='submit'
+              value='Add'
               onClick={props.handleAdd}
             />
             <input
-              className="cancel"
-              type="button"
-              value="Cancel"
+              className='cancel'
+              type='button'
+              value='Cancel'
               onClick={props.handleCancel}
             />
           </div>

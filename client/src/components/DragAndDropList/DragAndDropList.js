@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { useEffect, useState } from 'react';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
-import Issue from "../Issue/Issue";
+import Issue from '../Issue/Issue';
 
-import "./DragAndDropList.css";
+import './DragAndDropList.css';
 
 function DragAndDropList(props) {
   const [items, setItems] = useState([]);
@@ -17,13 +17,16 @@ function DragAndDropList(props) {
     tmpItems.splice(result.destination.index, 0, reorderedItem);
     setItems(tmpItems);
   }
-  console.log(items.map((item) => item.id));
+
+  console.log('props.items', props.items);
+  console.log('items', items);
+
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
-      <Droppable droppableId="items">
+      <Droppable droppableId='items'>
         {(provided) => (
           <div
-            className="items"
+            className='items'
             {...provided.droppableProps}
             ref={provided.innerRef}
           >
