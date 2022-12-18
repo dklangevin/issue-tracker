@@ -1,5 +1,26 @@
+/* Color palette: https://coolors.co/041b15-136f63-22aaa1-4ce0d2-84cae7 */
+
+:root {
+  --label-width: 100%;
+  --select-width: 220px;
+  --form-item-height: 30px;
+  --form-item-border-color: lightgrey;
+  --dark-jungle-green: #041b15ff;
+  --pine-green: #136f63ff;
+  --light-sea-green: #22aaa1ff;
+  --turquoise: #4ce0d2ff;
+  --sky-blue: #84cae7ff;
+  --light-grey: #c7c7c7;
+  --middle-grey: #545454;
+  --dark-grey: #3a3a3a;
+  --very-dark-grey: #262626;
+  --text: white;
+  --light-grey-text: #d0d0d0;
+  --grey-text: #c0c0c0;
+}
+
 .App {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .App-logo {
@@ -28,13 +49,31 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Yellowtail&display=swap');
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Yellowtail&display=swap");
+body {
+  min-height: 100vh;
+  background: var(--dark-grey);
+  color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+div,
+ul,
+li,
+a {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
