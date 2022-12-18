@@ -1,7 +1,16 @@
+import { useEffect, useState } from 'react';
 import api from '../api';
 
-const listUsers = () => {
-  return api.users.list().then((res) => res.json());
+const listUsers = async () => {
+  return api.users.list().then((res) => res.data);
 };
 
-export default listUsers;
+const useUsers = () => {
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    listUsers().then((res) => setUsers(res));
+  }, []);
+  return users;
+};
+
+export default useUsers;
