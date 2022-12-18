@@ -1,0 +1,22 @@
+:root {
+  --form-item-border-color: lightgrey;
+}
+
+.input label {
+  display: block;
+  margin-top: 20px;
+}
+
+.input input {
+  padding: 16px;
+  margin-top: 10px;
+  border-radius: 4px;
+  border: 1px solid var(--form-item-border-color);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input label span {
+  color: grey;
+  font-style: italic;
+}

@@ -1,14 +1,13 @@
 import './Input.css';
 
-function Input(props) {
-  const { title, required, ...other } = props;
+function Input({ title, required, ...restProps }) {
   return (
-    <div>
+    <div className="input">
       <label>
         {title}
         {!required ? <span> - Optional</span> : null}
       </label>
-      <input type='text' required={required} {...other} />
+      <input type="text" required={required} {...restProps} />
     </div>
   );
 }
