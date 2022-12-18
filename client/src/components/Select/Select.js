@@ -1,11 +1,11 @@
-import "./Select.css";
+import './Select.css';
 
 function Select(props) {
-  const { title, data, displayKey, defaultOption, ...other } = props;
+  const { title, data, defaultOption, ...other } = props;
   return (
     <div>
       <label>{title}</label>
-      <select {...other}>
+      <select className="capitalize" {...other}>
         {defaultOption ? (
           <option value={defaultOption}>{defaultOption}</option>
         ) : null}
