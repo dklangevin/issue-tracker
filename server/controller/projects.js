@@ -1,6 +1,6 @@
-import * as model from '../model/projects.js';
+const model = require('../model/projects.js');
 
-export const getProjects = async (req, res) => {
+const getProjects = async (req, res) => {
   try {
     const projects = await model.getProjects();
     res.json(projects);
@@ -9,8 +9,7 @@ export const getProjects = async (req, res) => {
   }
 };
 
-// fetch an issue
-export const getProjectById = async (req, res) => {
+const getProjectById = async (req, res) => {
   try {
     const { id } = req.params;
     const project = await model.getProjectById(id);
@@ -20,8 +19,7 @@ export const getProjectById = async (req, res) => {
   }
 };
 
-// create an issue
-export const createProject = async (req, res) => {
+const createProject = async (req, res) => {
   try {
     const { project } = req.body;
     await model.createProject(project);
@@ -30,8 +28,7 @@ export const createProject = async (req, res) => {
   }
 };
 
-// update an issue
-export const updateProject = async (req, res) => {
+const updateProject = async (req, res) => {
   try {
     const { id } = req.params;
     const { project } = req.body;
@@ -41,12 +38,19 @@ export const updateProject = async (req, res) => {
   }
 };
 
-// delete an issue
-export const deleteProject = async (req, res) => {
+const deleteProject = async (req, res) => {
   try {
     const { id } = req.params;
     await model.deleteProject(id);
   } catch (err) {
     console.error(err.message);
   }
+};
+
+module.exports = {
+  getProjects,
+  getProjectById,
+  createProject,
+  updateProject,
+  deleteProject,
 };

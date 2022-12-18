@@ -1,7 +1,6 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -16,6 +15,8 @@
     "dotenv": "^10.0.0",
     "epxress": "^0.0.1-security",
     "express": "^4.17.2",
+    "fs": "^0.0.1-security",
+    "https": "^1.0.0",
     "nodemon": "^2.0.15",
     "pg": "^8.7.1",
     "sequelize": "^7.0.0-alpha.4"

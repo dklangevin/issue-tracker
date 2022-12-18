@@ -1,7 +1,9 @@
-import pool from '../database.js';
+const pool = require('../database.js');
 
-export const getUsers = async () => {
+const getUsers = async () => {
   const query = 'SELECT * FROM users';
   const { rows } = await pool.query(query);
   return rows;
 };
+
+module.exports = getUsers;

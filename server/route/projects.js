@@ -1,14 +1,14 @@
-import express from 'express';
+const { Router } = require('express');
 
-import {
+const {
   getProjects,
   getProjectById,
   createProject,
   updateProject,
   deleteProject,
-} from '../controller/projects.js';
+} = require('../controller/projects.js');
 
-const router = express.Router();
+const router = new Router();
 
 router.get('/api/projects', getProjects);
 router.get('/api/projects/:id', getProjectById);
@@ -16,4 +16,4 @@ router.post('/api/projects', createProject);
 router.put('/api/projects/:id', updateProject);
 router.delete('/api/projects/:id', deleteProject);
 
-export default router;
+module.exports = router;

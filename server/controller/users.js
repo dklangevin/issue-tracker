@@ -1,10 +1,12 @@
-import * as model from '../model/users.js';
+const _getUsers = require('../model/users.js');
 
-export const getUsers = async (req, res) => {
+const getUsers = async (req, res) => {
   try {
-    const users = await model.getUsers();
+    const users = await _getUsers();
     res.json(users);
   } catch (err) {
     console.error(err.message);
   }
 };
+
+module.exports = getUsers;
