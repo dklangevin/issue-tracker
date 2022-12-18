@@ -1,0 +1,42 @@
+.container {
+  position: relative;
+  padding: 8px;
+}
+
+.container:hover .dropdown {
+  display: flex;
+}
+
+.current {
+  display: flex;
+  align-items: center;
+  cursor: default;
+}
+
+.dropdown {
+  min-width: 100%;
+
+  position: absolute;
+  left: -4px;
+
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+
+  background: var(--very-dark-grey);
+
+  margin-top: 8px;
+  padding: 12px;
+
+  border-radius: 4px;
+}
+
+.dropdown li {
+  list-style: none;
+  cursor: pointer;
+  color: var(--grey-text);
+}
+
+.dropdown li:hover {
+  color: var(--light-sea-green);
+}
