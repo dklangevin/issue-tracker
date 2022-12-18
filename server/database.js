@@ -1,8 +1,7 @@
-import dotenv from 'dotenv';
-dotenv.config();
+require('dotenv').config();
+const fs = require('fs');
 
-import pkg from 'pg';
-const { Pool } = pkg;
+const { Pool } = require('pg');
 
 const {
   DB_HOST: HOST,
@@ -18,6 +17,11 @@ const pool = new Pool({
   password: PASSWORD,
   database: DATABASE,
   port: PORT,
+  ssl: {
+    rejectUnauthorized: false,
+    key: fs.readFileSync('key.pem'),
+    cert: fs.readFileSync('cert.pem'),
+  },
 });
 
-export default pool;
+module.exports = pool;
