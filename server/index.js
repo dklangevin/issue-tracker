@@ -1,28 +1,41 @@
-import dotenv from 'dotenv';
-dotenv.config();
+// const issuesRoutes = require('./route/issues.js');
+const projectsRoutes = require('./route/projects.js');
+// const categoriesRoutes = require('./route/categories.js');
+// const prioritiesRoutes = require('./route/priorities.js');
+const usersRoutes = require('./route/users.js');
 
-import express from 'express';
-import cors from 'cors';
+// middlewares
+// app.use(cors());
+// app.use(express.json());
 
-import issuesRoutes from './route/issues.js';
-import projectsRoutes from './route/projects.js';
-import categoriesRoutes from './route/categories.js';
-import prioritiesRoutes from './route/priorities.js';
-import usersRoutes from './route/users.js';
+// routes
+// app.use(issuesRoutes);
+// app.use(categoriesRoutes);
+// app.use(prioritiesRoutes);
+
+const http = require('http');
+const https = require('https');
+const fs = require('fs');
+
+const express = require('express');
 
 const app = express();
 
-// middlewares
-app.use(cors());
-app.use(express.json());
-
-// routes
-app.use(issuesRoutes);
-app.use(projectsRoutes);
-app.use(categoriesRoutes);
-app.use(prioritiesRoutes);
 app.use(usersRoutes);
+app.use(projectsRoutes);
 
-app.listen(5000, () => {
-  console.log('Server is started and listening on port 5000');
+http
+  .createServer(
+    // {
+    // key: fs.readFileSync('key.pem'),
+    // cert: fs.readFileSync('cert.pem'),
+    // },
+    app
+  )
+  .listen(5000, () => {
+    console.log('server is runing at port 5000');
+  });
+
+app.get('/', (req, res) => {
+  res.send('Hello from express server.');
 });
