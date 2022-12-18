@@ -6,19 +6,21 @@ const api = axios.create({
 });
 
 api.users = {
-  list: () => api.get('/users'),
-  fetch: (id) => api.fetch(`/users/${id}`),
+  list: async () => api.get('/users'),
+  fetch: async (id) => api.fetch(`/users/${id}`),
 };
 
 api.issues = {
-  list: () => api.get('/issues'),
-  fetch: (id) => api.get(`/issues/${id}`),
-  create: (body) => api.post('/issues', body),
+  list: async () => api.get('/issues'),
+  fetch: async (id) => api.get(`/issues/${id}`),
+  create: async (body) => api.post('/issues', body),
 };
 
-api.project = {
-  list: () => api.get(`/projects`),
+api.projects = {
+  list: async () => api.get('/projects'),
   categories: {
-    list: (id) => api.get(`/projects/${id}/categories`),
+    list: async (id) => api.get(`/projects/${id}/categories`),
   },
 };
+
+export default api;
