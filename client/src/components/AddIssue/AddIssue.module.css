@@ -1,0 +1,24 @@
+.container {
+  padding: 32px;
+}
+
+.title {
+  margin-bottom: 32px;
+}
+
+.priorities > label {
+  margin-bottom: 8px;
+}
+
+.priorities > div {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-top: 20px;
+}

@@ -1,11 +1,18 @@
-import './AddIssue.css';
+import styles from './AddIssue.module.css';
 import classNames from 'classnames';
 import { useState, useEffect } from 'react';
 import Input from '../Input/Input';
-import ProjectCategorySelect from '../ProjectCategorySelect/ProjectCategorySelect';
 import Select from '../Select/Select';
+import listProjects from '../../data/projects';
+import { createIssue } from '../../data/issues';
+import listProjectCategories from '../../data/projects/categories';
+import { PRIORITIES } from '../../constants';
+import listUsers from '../../data/users';
+import { Modal } from '../Modal/Modal';
+import Button from '../Button/Button';
+import Pill from '../Pill/Pill';
 
-function AddIssue(props) {
+function AddIssue({ projectId, hidden, setHidden, ...props }) {
   const [issue, setIssue] = useState({
     project: 'None',
     title: '',
@@ -16,43 +23,26 @@ function AddIssue(props) {
 
   const [projects, setProjects] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [priorities, setPriorities] = useState([]);
   const [users, setUsers] = useState([]);
 
-  const endpoints = {
-    createIssue: '/api/issues',
-    getProjects: '/api/projects',
-    getCategories: '/api/categories/project/',
-    getPriorities: '/api/priorities',
-    getUsers: '/api/users',
-  };
+  const [priority, setPriority] = useState('low');
 
   async function onAddIssue(e) {
     e.preventDefault();
     try {
       const newIssue = {
         ...issue,
-        project: getProjectId(issue.project),
+        project: projectId,
         category: getCategoryId(issue.category),
       };
       const body = {
         issue: newIssue,
       };
-      await fetch(endpoints.createIssue, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      });
+      await createIssue(body);
     } catch (err) {
       console.error(err.message);
     }
     props.handleAdd();
-  }
-
-  function getProjectId(projectName) {
-    return projects.filter((project) => project['name'] === projectName)?.[0]?.[
-      'id'
-    ];
   }
 
   function getCategoryId(categoryName) {
@@ -61,57 +51,26 @@ function AddIssue(props) {
     )?.[0]?.['id'];
   }
 
-  async function getProjects() {
-    const res = await fetch(endpoints.getProjects);
-    const projectsArray = await res.json();
-    setProjects(projectsArray);
-  }
+  // useEffect(() => {
+  //   listProjects().then((res) => setProjects(res));
+  //   listProjectCategories(projectId).then((res) => setCategories(res));
+  //   listUsers().then((res) => setUsers(res));
+  // }, [projectId]);
 
-  async function getCategories(project_id) {
-    let categoriesArray;
-    if (project_id !== undefined) {
-      const res = await fetch(`${endpoints.getCategories}${project_id}`);
-      categoriesArray = await res.json();
-    } else {
-      categoriesArray = [];
-    }
-    setCategories(categoriesArray);
-  }
-
-  async function getPriorities() {
-    const res = await fetch(endpoints.getPriorities);
-    const prioritiesArray = await res.json();
-    setPriorities(prioritiesArray);
-  }
-
-  async function getUsers() {
-    const res = await fetch(endpoints.getUsers);
-    const usersArray = await res.json();
-    setUsers(usersArray);
-  }
-
-  useEffect(() => {
-    getProjects();
-    getCategories();
-    getPriorities();
-    getUsers();
-  }, []);
+  // console.log(projects);
 
   return (
-    <div
-      className={classNames(
-        'add-issue',
-        'modal',
-        props.hidden ? 'display-none' : 'display-block'
-      )}
+    <Modal
+      hidden={hidden}
+      setHidden={setHidden}
+      className={classNames('add-issue')}
     >
-      <section className='modal-main'>
-        <h1 className='title'>Add Issue</h1>
-        <hr />
+      <section className={styles.container}>
+        <h1 className="title">Add Issue</h1>
         <form onSubmit={onAddIssue}>
           <Input
-            title='Title'
-            placeholder='Issue title'
+            title="Title"
+            placeholder="Issue title"
             required={true}
             value={issue.title}
             onChange={(e) => {
@@ -119,61 +78,63 @@ function AddIssue(props) {
             }}
           />
           <Input
-            title='Description'
-            id='description'
-            placeholder='Issue description'
+            title="Description"
+            id="description"
+            placeholder="Issue description"
             value={issue.description}
             onChange={(e) => {
               setIssue({ ...issue, description: e.target.value });
             }}
           />
-          <ProjectCategorySelect
-            projects={projects.map((project) => project.name)}
-            categories={categories.map((category) => category.name)}
-            projectValue={issue.project}
-            categoryValue={issue.category}
-            onChangeProject={(e) => {
-              setIssue({ ...issue, project: e.target.value, category: null });
-              getCategories(getProjectId(e.target.value));
-            }}
-            onChangeCategory={(e) => {
-              setIssue({ ...issue, category: e.target.value });
-            }}
+          <Select
+            title="Category"
+            value={issue.category}
+            onChange={(e) => setIssue({ ...issue, category: e.target.value })}
+            data={categories}
+            defaultOption="None"
           />
           <Select
-            title='Assignee'
+            title="Assignee"
             value={issue.assignee}
             onChange={(e) => {
               setIssue({ ...issue, assignee: e.target.value });
             }}
             data={users.map((user) => user.display_name)}
-            defaultOption='None'
+            defaultOption="None"
           />
-          <Select
-            title='Priority'
+          {/* <Select
+            title="Priority"
             value={issue.priority}
             onChange={(e) => {
               setIssue({ ...issue, priority: e.target.value });
             }}
-            data={priorities.map((priority) => priority.name)}
-          />
-          <div id='buttons' className='buttons'>
-            <input
-              className='add'
-              type='submit'
-              value='Add'
-              onClick={props.handleAdd}
-            />
-            <input
-              className='cancel'
-              type='button'
-              value='Cancel'
-              onClick={props.handleCancel}
-            />
+            data={PRIORITIES}
+          /> */}
+          <div className={styles.priorities}>
+            <label>Priority</label>
+            <div>
+              {PRIORITIES.map(({ name, color }) => (
+                <Pill
+                  key={name}
+                  color={color}
+                  selected={name === priority}
+                  onClick={() => setPriority(name)}
+                >
+                  {name}
+                </Pill>
+              ))}
+            </div>
+          </div>
+
+          <div id="buttons" className={styles.buttons}>
+            <Button onClick={props.handleCancel} appearance="secondary">
+              Cancel
+            </Button>
+            <Button onClick={props.handleAdd}>Add</Button>
           </div>
         </form>
       </section>
-    </div>
+    </Modal>
   );
 }
 
