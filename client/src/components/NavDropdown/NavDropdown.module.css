@@ -1,0 +1,88 @@
+.container {
+  position: relative;
+  padding: 8px;
+}
+
+.container:hover .wrapDropdown {
+  display: block;
+}
+
+.container a {
+  text-decoration: none;
+  color: var(--text);
+}
+
+.current {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 900;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.current > span {
+  min-width: 0;
+  max-width: 152px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wrapDropdown {
+  position: absolute;
+  left: -4px;
+  display: none;
+  padding-top: 8px;
+  z-index: 1;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--very-dark-grey);
+  margin-top: 8px;
+  padding: 12px;
+  border-radius: 4px;
+  z-index: 1;
+  border: 1px solid var(--border);
+}
+
+.dropdown li {
+  list-style: none;
+  cursor: pointer;
+  color: var(--grey-text);
+}
+
+.dropdown a:hover {
+  color: var(--light-sea-green);
+}
+
+.newProject {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 900;
+  color: var(--text) !important;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.plus {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  margin: 0 0 -1px 4px;
+}
+
+.container hr {
+  width: 100%;
+  margin: -2px 0 -2px 0;
+  border: 1px solid var(--dark-grey);
+}
+
+.container a {
+  white-space: nowrap;
+}
