@@ -1,4 +1,4 @@
-// const issuesRoutes = require('./route/issues.js');
+const issuesRoutes = require('./route/issues.js');
 const projectsRoutes = require('./route/projects.js');
 // const categoriesRoutes = require('./route/categories.js');
 // const prioritiesRoutes = require('./route/priorities.js');
@@ -16,13 +16,17 @@ const usersRoutes = require('./route/users.js');
 const http = require('http');
 const https = require('https');
 const fs = require('fs');
+const bodyParser = require('body-parser');
 
 const express = require('express');
 
 const app = express();
 
+app.use(bodyParser.json());
+
 app.use(usersRoutes);
 app.use(projectsRoutes);
+app.use(issuesRoutes);
 
 http
   .createServer(
