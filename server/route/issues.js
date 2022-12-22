@@ -1,19 +1,19 @@
-import express from 'express';
+const { Router } = require('express');
 
-import {
+const {
   getIssues,
-  getIssueById,
-  createIssue,
-  updateIssue,
-  deleteIssue,
-} from '../controller/issues.js';
+  // getIssueById,
+  // createIssue,
+  // updateIssue,
+  // deleteIssue,
+} = require('../controller/issues.js');
 
-const router = express.Router();
+const router = new Router();
 
 router.get('/api/issues', getIssues);
-router.get('/api/issues/:id', getIssueById);
-router.post('/api/issues', createIssue);
-router.put('/api/issues/:id', updateIssue);
-router.delete('/api/issues/:id', deleteIssue);
+// router.get('/api/issues/:id', getIssueById);
+// router.post('/api/issues', createIssue);
+// router.put('/api/issues/:id', updateIssue);
+// router.delete('/api/issues/:id', deleteIssue);
 
-export default router;
+module.exports = router;
