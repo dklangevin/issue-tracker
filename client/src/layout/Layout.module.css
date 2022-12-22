@@ -12,6 +12,7 @@
   gap: 8px;
   list-style: none;
   padding: 0;
+  width: 100%;
 }
 
 .layout > ul > li > span {
@@ -30,4 +31,8 @@
 
 .layout > ul > li > a:hover {
   background: var(--middle-grey);
+}
+
+.projectDropdown {
+  margin-left: auto;
 }
