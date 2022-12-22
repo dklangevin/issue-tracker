@@ -1,19 +1,25 @@
-import "./Issue.css";
-import Avatar from "../Avatar/Avatar";
-import PriorityLabel from "../PriorityLabel/PriorityLabel";
-import CategoryLabel from "../CategoryLabel/CategoryLabel";
-import classNames from "classnames";
+import classNames from 'classnames';
+import Avatar from '../Avatar/Avatar';
+import CategoryLabel from '../CategoryLabel/CategoryLabel';
+import PriorityLabel from '../PriorityLabel/PriorityLabel';
+import styles from './Issue.module.css';
 
-function Issue(props) {
+function Issue({ issue, isDragging, ...props }) {
+  const { id, title, project, priority, category } = issue;
   return (
-    <div className={classNames("issue", props.selected ? "active" : undefined)}>
-      <PriorityLabel priority={props.priority} />
-      <a
-        href={`${props.project}-${props.id}`}
-      >{`${props.project}-${props.id}`}</a>
-      <div className="issue-title">{props.title}</div>
-      <CategoryLabel name={props.category} color={props.color} />
-      <Avatar></Avatar>
+    <div
+      className={classNames(
+        styles.container,
+        ...(props.selected ? [styles.active] : [])
+        // ...(isDragging ? [styles.dragging] : [])
+      )}
+      style={props.style}
+    >
+      <PriorityLabel priority={priority} />
+      <a href={`${project}-${id}`}>{`${project}-${id}`}</a>
+      <span>{title}</span>
+      <CategoryLabel name={category} color={props.color} />
+      <Avatar />
     </div>
   );
 }
