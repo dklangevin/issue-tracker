@@ -1,4 +1,4 @@
-import './Search.css';
+import styles from './Search.module.css';
 
 function Search({ title, data, value, setValue, onSelect, ...props }) {
   const filtered = data.filter((item) =>
@@ -11,11 +11,11 @@ function Search({ title, data, value, setValue, onSelect, ...props }) {
   };
 
   return (
-    <div className="container">
+    <div className={styles.container}>
       <label>{title}</label>
       <input type="text" value={value} {...props} />
       {value !== '' && (
-        <ul>
+        <ul className={styles.results}>
           {filtered.map((item) => (
             <li key={item.id} onClick={() => handleSelect(item)}>
               {item.value}

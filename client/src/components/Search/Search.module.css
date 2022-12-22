@@ -1,27 +1,27 @@
 .container {
   position: relative;
-}
-
-.container label {
-  display: block;
-  margin-top: 20px;
-}
-
-.container input {
-  padding: 16px;
-  margin-top: 10px;
-  border-radius: 4px;
-  border: 1px solid var(--form-item-border-color);
   width: 100%;
-  box-sizing: border-box;
 }
 
-.container label span {
+.container > label {
+  margin-bottom: 4px;
+}
+
+.container > input {
+  padding: 16px;
+  border-radius: 4px;
+  width: 100%;
+  background: var(--input-background);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.container > label > span {
   color: grey;
   font-style: italic;
 }
 
-.container ul {
+.results {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -31,9 +31,11 @@
   border-radius: 4px;
   padding: 12px;
   background: var(--very-dark-grey);
+  border: 1px solid var(--dark-grey);
+  z-index: 1;
 }
 
-.container li {
+.results > li {
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -41,7 +43,7 @@
   gap: 12px;
 }
 
-.container li:hover {
+.results > li:hover {
   color: var(--light-sea-green) !important;
 }
 
