@@ -1,22 +1,25 @@
-import './Select.css';
+import { DownArrow } from '../../icons';
+import styles from './Select.module.css';
 
-function Select(props) {
-  const { title, data, defaultOption, ...other } = props;
+function Select({ title, data, defaultOption, ...props }) {
   return (
-    <div>
+    <div className={styles.container}>
       <label>{title}</label>
-      <select className="capitalize" {...other}>
-        {defaultOption ? (
-          <option value={defaultOption}>{defaultOption}</option>
-        ) : null}
-        {data
-          ? data.map((item, index) => (
-              <option key={index} value={item}>
-                {item}
-              </option>
-            ))
-          : null}
-      </select>
+      <div className={styles.select}>
+        <select {...props}>
+          {defaultOption ? (
+            <option value={defaultOption}>{defaultOption}</option>
+          ) : null}
+          {data
+            ? data.map((item, index) => (
+                <option key={index} value={item}>
+                  {item}
+                </option>
+              ))
+            : null}
+        </select>
+        <DownArrow className={styles.arrow} />
+      </div>
     </div>
   );
 }
