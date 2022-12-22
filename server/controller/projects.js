@@ -21,7 +21,7 @@ const getProjectById = async (req, res) => {
 
 const createProject = async (req, res) => {
   try {
-    const { project } = req.body;
+    const project = req.body;
     await model.createProject(project);
   } catch (err) {
     console.error(err.message);

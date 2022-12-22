@@ -13,10 +13,32 @@ const getProjectById = async (id) => {
 };
 
 const createProject = async (project) => {
-  const { title, description, priority, category } = project;
-  const query =
-    'INSERT INTO projects(title, description, priority, category) VALUES ($1, $2, $3, $4)';
-  await pool.query(query, [title, description, priority, category]);
+  const { name, description, users } = project;
+
+  const client = await pool.connect();
+
+  try {
+    await client.query('BEGIN');
+
+    // create project
+    const query =
+      'INSERT INTO projects(name, description) VALUES ($1, $2) RETURNING id';
+    const res = await client.query(query, [name, description]);
+
+    // create invites for each invited user
+    for (const userId of users) {
+      const query =
+        'INSERT INTO project_invites(project_id, user_id) VALUES ($1, $2)';
+      await client.query(query, [res.rows[0].id, userId]);
+    }
+
+    await client.query('COMMIT');
+  } catch (e) {
+    await client.query('ROLLBACK');
+    throw e;
+  } finally {
+    client.release();
+  }
 };
 
 const updateProject = async (id, project) => {
@@ -36,5 +58,5 @@ module.exports = {
   getProjectById,
   createProject,
   updateProject,
-  deleteProject
-}
+  deleteProject,
+};
