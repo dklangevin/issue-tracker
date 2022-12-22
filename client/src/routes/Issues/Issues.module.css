@@ -1,0 +1,23 @@
+.container {
+  padding: 32px;
+  border-radius: 5px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.container > h1 {
+  margin: 0 0 20px 0;
+}
+
+.container > button {
+  width: fit-content;
+  margin: 16px 0 0 auto;
+}
+
+.plus {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  margin: 0 -4px 0 4px;
+}
