@@ -5,6 +5,10 @@ const listProjects = async () => {
   return api.projects.list().then((res) => res.data);
 };
 
+export const createProject = async (body) => {
+  await api.projects.create(body);
+};
+
 const useProjects = () => {
   const [projects, setProjects] = useState([]);
   useEffect(() => {

@@ -1,10 +1,10 @@
-import api from '../api';
+import api from '../../api';
 
-const listProjectCategories = (projectId) => {
+const listProjectCategories = async (projectId) => {
   if (!projectId) {
     return [];
   }
-  return api.projects.categories.list().then((res) => res.json());
+  return api.projects.categories.list().then((res) => res.data);
 };
 
 export default listProjectCategories;
