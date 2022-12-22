@@ -1,9 +1,11 @@
 import { createContext } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Backlog from './components/Backlog/Backlog';
-import CreateProject from './components/CreateProject/CreateProject';
+import Backlog from './routes/Backlog/Backlog';
+import CreateProject from './routes/CreateProject/CreateProject';
+import Project from './routes/Project/Project';
 import Layout from './layout/Layout';
+import Issues from './routes/Issues/Issues';
 
 export const ProjectContext = createContext();
 
@@ -15,10 +17,14 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<CreateProject />} />
+            <Route index element={<Project />} />
+          </Route>
+          <Route path="/project" element={<Layout />}>
+            <Route index element={<Project />} />
+            <Route path="create" element={<CreateProject />} />
           </Route>
           <Route path="/issues" element={<Layout />}>
-            <Route index element={<CreateProject />} />
+            <Route index element={<Issues />} />
           </Route>
           <Route path="/backlog" element={<Layout />}>
             <Route index element={<Backlog />} />
