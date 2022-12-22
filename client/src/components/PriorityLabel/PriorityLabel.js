@@ -1,28 +1,14 @@
-import classNames from "classnames";
+import classNames from 'classnames';
+import styles from './PriorityLabel.module.css';
 
-import "./PriorityLabel.css";
-
-const classes = {
-  LOW: "low-priority",
-  MEDIUM: "medium-priority",
-  HIGH: "high-priority",
-  CRITICAL: "critical-priority",
-};
-
-function getClass(priority) {
-  return classes[priority] || classes["LOW"];
-}
-
-function PriorityLabel(props) {
+function PriorityLabel({ priority }) {
   return (
-    <div className={classNames("priority-label", getClass(props.priority))}>
-      {props.priority}
+    <div
+      className={classNames(styles.container, styles[priority] || styles.low)}
+    >
+      {priority}
     </div>
   );
 }
-
-PriorityLabel.defaultProps = {
-  priority: "LOW",
-};
 
 export default PriorityLabel;

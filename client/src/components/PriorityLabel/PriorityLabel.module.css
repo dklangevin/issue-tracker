@@ -1,4 +1,4 @@
-div .priority-label {
+.container {
   background: rgb(96, 191, 255);
   border-radius: 5px;
   padding: 2px 5px 2px 5px;
@@ -8,20 +8,21 @@ div .priority-label {
   min-width: 55px;
   text-align: center;
   font-size: 12px;
+  text-transform: uppercase;
 }
 
-div .low-priority {
+.low {
   background: rgb(139, 195, 74);
 }
 
-div .medium-priority {
+.medium {
   background: rgb(253, 216, 53);
 }
 
-div .high-priority {
+div .high {
   background: rgb(255, 167, 38);
 }
 
-div .critical-priority {
+.critical {
   background: rgb(239, 83, 80);
 }
