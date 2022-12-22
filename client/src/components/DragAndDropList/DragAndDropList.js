@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import Issue from '../Issue/Issue';
-
 import './DragAndDropList.css';
 
 function DragAndDropList(props) {
@@ -10,45 +8,53 @@ function DragAndDropList(props) {
   useEffect(() => {
     setItems(props.items);
   }, [props.items]);
-  function handleOnDragEnd(result) {
-    if (!result.destination) return;
-    const tmpItems = Array.from(items);
-    const [reorderedItem] = tmpItems.splice(result.source.index, 1);
-    tmpItems.splice(result.destination.index, 0, reorderedItem);
-    setItems(tmpItems);
-  }
 
-  console.log('props.items', props.items);
-  console.log('items', items);
+  const reorder = (list, startIndex, endIndex) => {
+    const result = Array.from(list);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+    return result;
+  };
+
+  const handleOnDragEnd = (result) => {
+    if (!result.destination) {
+      return;
+    }
+    const _items = reorder(
+      items,
+      result.source.index,
+      result.destination.index
+    );
+    setItems(_items);
+  };
+
+  const getItemStyle = (isDragging, draggableStyle) => ({
+    padding: 4,
+    ...draggableStyle,
+  });
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
-      <Droppable droppableId='items'>
+      <Droppable droppableId="droppable">
         {(provided) => (
-          <div
-            className='items'
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-          >
-            {items.map(({ id, title, project, category, priority }, index) => (
+          <div {...provided.droppableProps} ref={provided.innerRef}>
+            {items.map((issue, i) => (
               <Draggable
-                key={id.toString()}
-                draggableId={id.toString()}
-                index={index}
+                key={issue.id.toString()}
+                draggableId={issue.id.toString()}
+                index={i}
               >
-                {(provided) => (
+                {(provided, snapshot) => (
                   <div
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
+                    style={getItemStyle(
+                      snapshot.isDragging,
+                      provided.draggableProps.style
+                    )}
                   >
-                    <Issue
-                      title={title}
-                      id={id}
-                      project={project}
-                      category={category}
-                      priority={priority}
-                    />
+                    <Issue issue={issue} isDragging={snapshot.isDragging} />
                   </div>
                 )}
               </Draggable>
