@@ -17,7 +17,9 @@ api.issues = {
 };
 
 api.projects = {
+  fetch: async (id) => api.get(`/projects/${id}`),
   list: async () => api.get('/projects'),
+  create: async (body) => api.post('/projects', body),
   categories: {
     list: async (id) => api.get(`/projects/${id}/categories`),
   },
