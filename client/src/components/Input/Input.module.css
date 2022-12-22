@@ -1,0 +1,22 @@
+.container > label {
+  margin-bottom: 4px;
+}
+
+.container > input {
+  padding: 16px;
+  border-radius: 4px;
+  width: 100%;
+  background: var(--input-background);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.container > label > span {
+  color: grey;
+  font-style: italic;
+}
+
+.error {
+  color: var(--error);
+  margin-top: 4px;
+}

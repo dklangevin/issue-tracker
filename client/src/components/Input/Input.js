@@ -1,13 +1,14 @@
-import './Input.css';
+import styles from './Input.module.css';
 
-function Input({ title, required, ...restProps }) {
+function Input({ title, optional, error, ...props }) {
   return (
-    <div className="input">
+    <div className={styles.container}>
       <label>
         {title}
-        {!required ? <span> - Optional</span> : null}
+        {optional ? <span> - Optional</span> : null}
       </label>
-      <input type="text" required={required} {...restProps} />
+      <input type="text" {...props} />
+      {error && <span className="error">{error}</span>}
     </div>
   );
 }
