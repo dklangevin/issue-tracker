@@ -3,7 +3,8 @@ const { getUsers, getUser } = require('../controller/users.js');
 
 const router = new Router();
 
-router.get('/api/users', getUsers);
-router.get('/api/users/:id', getUser);
+router.get('/', getUsers);
+router.get('/:id', getUser);
+router.get('/', (req, res) => res.send('users'));
 
 module.exports = router;

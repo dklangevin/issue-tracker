@@ -10,7 +10,7 @@ const {
 
 const router = new Router();
 
-router.get('/api/issues', getIssues);
+router.get('/', getIssues);
 // router.get('/api/issues/:id', getIssueById);
 // router.post('/api/issues', createIssue);
 // router.put('/api/issues/:id', updateIssue);

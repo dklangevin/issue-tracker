@@ -1,32 +1,17 @@
-const issuesRoutes = require('./route/issues.js');
-const projectsRoutes = require('./route/projects.js');
-// const categoriesRoutes = require('./route/categories.js');
-// const prioritiesRoutes = require('./route/priorities.js');
-const usersRoutes = require('./route/users.js');
-
-// middlewares
-// app.use(cors());
-// app.use(express.json());
-
-// routes
-// app.use(issuesRoutes);
-// app.use(categoriesRoutes);
-// app.use(prioritiesRoutes);
-
 const http = require('http');
 const https = require('https');
 const fs = require('fs');
 const bodyParser = require('body-parser');
-
 const express = require('express');
+
+const routes = require('./route');
 
 const app = express();
 
 app.use(bodyParser.json());
 
-app.use(usersRoutes);
-app.use(projectsRoutes);
-app.use(issuesRoutes);
+app.use('/api', routes);
+app.get('/api', (req, res) => res.send('Hello from issue-tracker backend!'));
 
 http
   .createServer(

@@ -11,12 +11,12 @@ const {
 
 const router = new Router();
 
-router.get('/api/projects', getProjects);
-router.get('/api/projects/:id', getProjectById);
-router.post('/api/projects', createProject);
-router.put('/api/projects/:id', updateProject);
-router.delete('/api/projects/:id', deleteProject);
+router.get('/', getProjects);
+router.get('/:id', getProjectById);
+router.post('/', createProject);
+router.put('/:id', updateProject);
+router.delete('/:id', deleteProject);
 
-router.get('/api/projects/:id/users', getProjectUsers);
+router.get('/:id/users', getProjectUsers);
 
 module.exports = router;
