@@ -1,13 +1,7 @@
 import styles from './Pill.module.css';
 import classNames from 'classnames';
 
-export default function Pill({
-  children,
-  priority,
-  color,
-  selected,
-  ...props
-}) {
+export default function Pill({ children, priority, selected, ...props }) {
   return (
     <div
       className={classNames([styles.container, priority])}

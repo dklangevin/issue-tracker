@@ -1,17 +1,14 @@
-import styles from './AddIssue.module.css';
 import classNames from 'classnames';
-import { useState, useEffect } from 'react';
-import Input from '../Input/Input';
-import Select from '../Select/Select';
-import listProjects from '../../data/projects';
-import { createIssue } from '../../data/issues';
-import listProjectCategories from '../../data/projects/categories';
+import { useState } from 'react';
 import { PRIORITIES } from '../../constants';
-import listUsers from '../../data/users';
-import { Modal } from '../Modal/Modal';
-import Button from '../Button/Button';
-import Pill from '../Pill/Pill';
+import { createIssue } from '../../data/issues';
 import useUsers from '../../data/users';
+import Button from '../Button/Button';
+import Input from '../Input/Input';
+import { Modal } from '../Modal/Modal';
+import Pill from '../Pill/Pill';
+import Select from '../Select/Select';
+import styles from './AddIssue.module.css';
 
 function AddIssue({ projectId, hidden, setHidden, ...props }) {
   const [issue, setIssue] = useState({
@@ -22,8 +19,6 @@ function AddIssue({ projectId, hidden, setHidden, ...props }) {
     category: 'None',
   });
 
-  const [projects, setProjects] = useState([]);
-  const [categories, setCategories] = useState([]);
   const users = useUsers();
 
   const [priority, setPriority] = useState('low');
@@ -34,7 +29,6 @@ function AddIssue({ projectId, hidden, setHidden, ...props }) {
       const newIssue = {
         ...issue,
         project: projectId,
-        category: getCategoryId(issue.category),
       };
       const body = {
         issue: newIssue,
@@ -45,20 +39,6 @@ function AddIssue({ projectId, hidden, setHidden, ...props }) {
     }
     props.handleAdd();
   }
-
-  function getCategoryId(categoryName) {
-    return categories.filter(
-      (category) => category['name'] === categoryName
-    )?.[0]?.['id'];
-  }
-
-  // useEffect(() => {
-  //   listProjects().then((res) => setProjects(res));
-  //   listProjectCategories(projectId).then((res) => setCategories(res));
-  //   listUsers().then((res) => setUsers(res));
-  // }, [projectId]);
-
-  // console.log(projects);
 
   return (
     <Modal
@@ -87,13 +67,13 @@ function AddIssue({ projectId, hidden, setHidden, ...props }) {
               setIssue({ ...issue, description: e.target.value });
             }}
           />
-          <Select
+          {/* <Select
             title="Category"
             value={issue.category}
             onChange={(e) => setIssue({ ...issue, category: e.target.value })}
             data={categories}
             defaultOption="None"
-          />
+          /> */}
           <Select
             title="Assignee"
             value={issue.assignee}

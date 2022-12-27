@@ -40,7 +40,7 @@ export default function Project({ create = false, ...props }) {
       <Input
         placeholder="Enter project name"
         value={name}
-        onChange={(e) => {
+        onChange={() => {
           // setName(e.target.value);
         }}
         // error={projectError}

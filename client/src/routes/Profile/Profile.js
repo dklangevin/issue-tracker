@@ -1,16 +1,8 @@
-import classNames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 import Input from '../../components/Input/Input';
-import TextArea from '../../components/TextArea/TextArea';
-import useProject from '../../data/project';
-import useProjectUsers from '../../data/projects/users';
-import useProjectContext from '../../hooks/projectContext';
-import { Close } from '../../icons';
-import { InviteUsers } from '../../components/InviteUsers/InviteUsers';
-import styles from './Profile.module.css';
-import Button from '../../components/Button/Button';
-import useUser from '../../data/user';
 import useProjects from '../../data/projects';
+import useUser from '../../data/user';
+import styles from './Profile.module.css';
 
 export default function Profile(props) {
   const [file, setFile] = useState();
@@ -59,7 +51,7 @@ export default function Profile(props) {
             <Input
               placeholder="Enter project name"
               value={`${first} ${last}`}
-              onChange={(e) => {
+              onChange={() => {
                 // setName(e.target.value);
               }}
               // error={projectError}
