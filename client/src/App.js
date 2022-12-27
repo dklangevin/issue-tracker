@@ -6,6 +6,7 @@ import CreateProject from './routes/CreateProject/CreateProject';
 import Project from './routes/Project/Project';
 import Layout from './layout/Layout';
 import Issues from './routes/Issues/Issues';
+import Profile from './routes/Profile/Profile';
 
 export const ProjectContext = createContext();
 
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route path="/categories" element={<Layout />}>
             <Route index element={<CreateProject />} />
+          </Route>
+          <Route path="/profile" element={<Layout />}>
+            <Route index element={<Profile />} />
           </Route>
         </Routes>
       </BrowserRouter>
