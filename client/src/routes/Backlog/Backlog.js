@@ -4,6 +4,7 @@ import { Plus } from '../../icons';
 import Button from '../../components/Button/Button';
 import DragAndDropList from '../../components/DragAndDropList/DragAndDropList';
 import styles from './Backlog.module.css';
+import AddIssue from '../../components/AddIssue/AddIssue';
 
 function Backlog() {
   const [hidden, setHidden] = useState(true);
@@ -21,11 +22,12 @@ function Backlog() {
       <Button onClick={() => setHidden(false)}>
         Create Issue <Plus className={styles.plus} />
       </Button>
-      {/* <AddIssue
+      <AddIssue
         hidden={hidden}
+        setHidden={setHidden}
         handleAdd={handleAdd}
         handleCancel={() => setHidden(true)}
-      /> */}
+      />
     </div>
   );
 }
