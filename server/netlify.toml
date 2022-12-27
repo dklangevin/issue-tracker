@@ -1,10 +1,7 @@
 [build]
     functions="functions"
 
-[[redirects]]
-    to="/.netlify/functions/api/:splat"
-    from="/api/*"
-    status=200 
+
 
 [functions]
   included_files = ["key.pem", "cert.pem"]
