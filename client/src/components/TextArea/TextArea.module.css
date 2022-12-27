@@ -1,0 +1,14 @@
+.container {
+  width: 100%;
+  min-width: 100%;
+  padding: 16px;
+  border-radius: 4px;
+  width: 100%;
+  background: var(--input-background);
+  color: var(--text);
+  font-size: 18px;
+  border: 1px solid var(--border);
+  font-family: inherit;
+  resize: none;
+  min-height: 140px;
+}
