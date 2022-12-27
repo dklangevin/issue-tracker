@@ -3,11 +3,7 @@ import styles from './PriorityLabel.module.css';
 
 function PriorityLabel({ priority }) {
   return (
-    <div
-      className={classNames(styles.container, styles[priority] || styles.low)}
-    >
-      {priority}
-    </div>
+    <div className={classNames(styles.container, priority)}>{priority}</div>
   );
 }
 
