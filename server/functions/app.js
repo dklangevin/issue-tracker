@@ -14,4 +14,6 @@ app.use(usersRoutes);
 app.use(projectsRoutes);
 app.use(issuesRoutes);
 
+app.use('/', (res) => res.json({ hello: 'hi' }));
+
 module.exports.handler = serverless(app);
