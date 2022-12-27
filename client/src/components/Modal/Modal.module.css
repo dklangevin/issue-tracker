@@ -9,7 +9,9 @@
 
 .container {
   position: fixed;
-  background: var(--dark-grey);
+  /* background: var(--dark-grey); */
+  background: var(--modal-background);
+  backdrop-filter: blur(6px);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
