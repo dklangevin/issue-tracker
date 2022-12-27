@@ -10,7 +10,7 @@ app.use(cors());
 
 app.use(bodyParser.json());
 
-app.use(routes);
+app.use('/', routes);
 
 app.get('/', (req, res) => res.send('Hello from issue-tracker backend!'));
 
