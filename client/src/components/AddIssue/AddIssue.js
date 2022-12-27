@@ -11,6 +11,7 @@ import listUsers from '../../data/users';
 import { Modal } from '../Modal/Modal';
 import Button from '../Button/Button';
 import Pill from '../Pill/Pill';
+import useUsers from '../../data/users';
 
 function AddIssue({ projectId, hidden, setHidden, ...props }) {
   const [issue, setIssue] = useState({
@@ -23,7 +24,7 @@ function AddIssue({ projectId, hidden, setHidden, ...props }) {
 
   const [projects, setProjects] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [users, setUsers] = useState([]);
+  const users = useUsers();
 
   const [priority, setPriority] = useState('low');
 
@@ -99,7 +100,9 @@ function AddIssue({ projectId, hidden, setHidden, ...props }) {
             onChange={(e) => {
               setIssue({ ...issue, assignee: e.target.value });
             }}
-            data={users.map((user) => user.display_name)}
+            data={users.map(
+              ({ first_name, last_name }) => `${first_name} ${last_name}`
+            )}
             defaultOption="None"
           />
           {/* <Select
@@ -116,6 +119,7 @@ function AddIssue({ projectId, hidden, setHidden, ...props }) {
               {PRIORITIES.map(({ name, color }) => (
                 <Pill
                   key={name}
+                  priority={name}
                   color={color}
                   selected={name === priority}
                   onClick={() => setPriority(name)}
