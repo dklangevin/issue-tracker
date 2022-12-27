@@ -7,13 +7,12 @@ import { generateLinearGradientBackground } from '../../util';
 
 export default function Profile(props) {
   const [file, setFile] = useState();
-  const [preview, setPreview] = useState();
+  const [, setPreview] = useState();
   const ref = useRef();
 
   const projects = useProjects();
 
   const user = useUser(1);
-  console.log(user);
 
   const { id, first_name: first, last_name: last } = user || {};
 
@@ -37,7 +36,9 @@ export default function Profile(props) {
         <section className={styles.details}>
           <div className={styles.wrapImage}>
             <div
-              style={{ background: generateLinearGradientBackground('abcdef') }}
+              style={{
+                background: generateLinearGradientBackground(`${id}-${first}`),
+              }}
               onClick={() => ref.current.click()}
             />
             <span className={styles.initials}>{initials}</span>

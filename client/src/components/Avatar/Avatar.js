@@ -15,7 +15,11 @@ function Avatar(props) {
         alt="avatar"
         {...props}
       /> */}
-      <div style={{ background: generateLinearGradientBackground('abcdef') }} />
+      <div
+        style={{
+          background: generateLinearGradientBackground(`${id}-${first}`),
+        }}
+      />
       <span>DL</span>
     </Link>
   );

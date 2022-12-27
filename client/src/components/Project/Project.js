@@ -16,7 +16,7 @@ export default function Project({ create = false, ...props }) {
   const project = useProject(create ? null : id);
   const projectUsers = useProjectUsers(id);
   const [file, setFile] = useState();
-  const [preview, setPreview] = useState();
+  const [, setPreview] = useState();
   const [addedUsers, setAddedUsers] = useState([]);
   const ref = useRef();
 
