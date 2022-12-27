@@ -5,6 +5,14 @@
   height: var(--size);
 }
 
+.container > div {
+  width: var(--size);
+  min-width: var(--size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
 .container > img {
   width: var(--size);
   min-width: var(--size);

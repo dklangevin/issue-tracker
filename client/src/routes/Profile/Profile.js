@@ -3,6 +3,7 @@ import Input from '../../components/Input/Input';
 import useProjects from '../../data/projects';
 import useUser from '../../data/user';
 import styles from './Profile.module.css';
+import { generateLinearGradientBackground } from '../../util';
 
 export default function Profile(props) {
   const [file, setFile] = useState();
@@ -35,8 +36,8 @@ export default function Profile(props) {
       <div className={styles.content}>
         <section className={styles.details}>
           <div className={styles.wrapImage}>
-            <img
-              src={preview || `https://avatar.tobi.sh/${id}-${first}`}
+            <div
+              style={{ background: generateLinearGradientBackground('abcdef') }}
               onClick={() => ref.current.click()}
             />
             <span className={styles.initials}>{initials}</span>

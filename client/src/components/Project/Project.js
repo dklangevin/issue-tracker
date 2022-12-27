@@ -9,6 +9,7 @@ import { Close } from '../../icons';
 import { InviteUsers } from '../InviteUsers/InviteUsers';
 import styles from './Project.module.css';
 import Button from '../Button/Button';
+import { generateLinearGradientBackground } from '../../util';
 
 export default function Project({ create = false, ...props }) {
   const { project: id } = useProjectContext();
@@ -49,10 +50,10 @@ export default function Project({ create = false, ...props }) {
       <div className={styles.content}>
         <section className={styles.details}>
           <div className={styles.wrapImage}>
-            <img
-              className={styles.image}
-              src={preview || `https://avatar.tobi.sh/${id}-${name}`}
-              onClick={() => ref.current.click()}
+            <div
+              style={{
+                background: generateLinearGradientBackground(`${id}-${name}`),
+              }}
             />
             <input
               type="file"
