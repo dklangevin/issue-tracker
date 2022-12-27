@@ -5,7 +5,7 @@
   border: none;
   border-radius: 5px;
   padding: 5px;
-  background: var(--dark-grey);
+  background: rgba(70, 70, 70, 0.8);
   cursor: pointer;
   /* margin: 8px 0; */
   /* margin: 2px; */
@@ -32,6 +32,6 @@
 }
 
 .dragging {
-  background: var(--middle-grey);
-  box-shadow: 0 0 5px 5px var(--drag-box-shadow);
+  background: rgba(13, 77, 68, 0.8);
+  /* box-shadow: 0 0 5px 5px var(--drag-box-shadow); */
 }

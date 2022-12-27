@@ -10,8 +10,8 @@ function Issue({ issue, isDragging, ...props }) {
     <div
       className={classNames(
         styles.container,
-        ...(props.selected ? [styles.active] : [])
-        // ...(isDragging ? [styles.dragging] : [])
+        ...(props.selected ? [styles.active] : []),
+        ...(isDragging ? [styles.dragging] : [])
       )}
       style={props.style}
     >
