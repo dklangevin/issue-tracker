@@ -12,6 +12,16 @@ const getProjectById = async (id) => {
   return rows[0];
 };
 
+const getProjectUsers = async (id) => {
+  const query = `SELECT pu.id, pu.role, u.id user_id, u.first_name, u.last_name, u.email 
+  FROM project_users AS pu 
+  JOIN users AS u 
+  ON pu.user_id = u.id 
+  WHERE project_id=$1 `;
+  const { rows } = await pool.query(query, [id]);
+  return rows;
+};
+
 const createProject = async (project) => {
   const { name, description, users } = project;
 
@@ -56,6 +66,7 @@ const deleteProject = async (id) => {
 module.exports = {
   getProjects,
   getProjectById,
+  getProjectUsers,
   createProject,
   updateProject,
   deleteProject,

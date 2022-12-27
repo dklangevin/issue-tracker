@@ -6,4 +6,10 @@ const getUsers = async () => {
   return rows;
 };
 
-module.exports = getUsers;
+const getUser = async (id) => {
+  const query = 'SELECT * FROM users WHERE id=$1';
+  const { rows } = await pool.query(query, [id]);
+  return rows[0];
+};
+
+module.exports = { getUsers, getUser };

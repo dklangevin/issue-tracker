@@ -1,12 +1,22 @@
-const _getUsers = require('../model/users.js');
+const model = require('../model/users.js');
 
 const getUsers = async (req, res) => {
   try {
-    const users = await _getUsers();
+    const users = await model.getUsers();
     res.json(users);
   } catch (err) {
     console.error(err.message);
   }
 };
 
-module.exports = getUsers;
+const getUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await model.getUser(id);
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
+module.exports = { getUsers, getUser };

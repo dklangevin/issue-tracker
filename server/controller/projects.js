@@ -19,6 +19,16 @@ const getProjectById = async (req, res) => {
   }
 };
 
+const getProjectUsers = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const projects = await model.getProjectUsers(id);
+    res.json(projects);
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
 const createProject = async (req, res) => {
   try {
     const project = req.body;
@@ -50,6 +60,7 @@ const deleteProject = async (req, res) => {
 module.exports = {
   getProjects,
   getProjectById,
+  getProjectUsers,
   createProject,
   updateProject,
   deleteProject,
