@@ -10,8 +10,8 @@ app.use(cors());
 
 app.use(bodyParser.json());
 
-app.use('/api', routes);
+app.use(routes);
 
-app.get('/api', (req, res) => res.send('Hello from issue-tracker backend!'));
+app.get('/', (req, res) => res.send('Hello from issue-tracker backend!'));
 
 module.exports.handler = serverless(app);
