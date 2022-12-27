@@ -2,12 +2,12 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL: '/api',
-  timeout: 1000,
+  timeout: 3000,
 });
 
 api.users = {
   list: async () => api.get('/users'),
-  fetch: async (id) => api.fetch(`/users/${id}`),
+  fetch: async (id) => api.get(`/users/${id}`),
 };
 
 api.issues = {
@@ -22,6 +22,9 @@ api.projects = {
   create: async (body) => api.post('/projects', body),
   categories: {
     list: async (id) => api.get(`/projects/${id}/categories`),
+  },
+  users: {
+    list: async (id) => api.get(`/projects/${id}/users`),
   },
 };
 
