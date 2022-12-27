@@ -22,11 +22,12 @@
 }
 
 .layout > ul > li > a {
-  font-weight: 800;
+  font-weight: 900;
+  font-size: 18px;
   text-decoration: none;
   border-radius: 4px;
-  color: var(--text);
   padding: 8px;
+  /* background: #54545433; */
 }
 
 .layout > ul > li > a:hover {
@@ -35,4 +36,13 @@
 
 .projectDropdown {
   margin-left: auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo > svg {
+  height: 50px;
 }

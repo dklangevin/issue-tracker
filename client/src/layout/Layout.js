@@ -6,6 +6,7 @@ import styles from './Layout.module.css';
 import { useEffect, useState } from 'react';
 import useProjects from '../data/projects';
 import NavDropdown from '../components/NavDropdown/NavDropdown';
+import Avatar from '../components/Avatar/Avatar';
 
 const Layout = () => {
   const projects = useProjects();
@@ -14,17 +15,11 @@ const Layout = () => {
   return (
     <ProjectContext.Provider value={{ project, setProject }}>
       <nav className={styles.layout}>
-        <Link to="/">
-          <Logo width={30} height={30} />
+        <Link to="/" className={styles.logo}>
+          <Logo />
         </Link>
         <ul>
-          {/* <li>
-            <ProjectDropdown current="PROJECT-A" />
-          </li> */}
           <li>
-            {/* <Link style={{ padding: 8 }} to="/issues">
-              Issues
-            </Link> */}
             <NavDropdown
               item={{ name: 'Issues', link: '/issues' }}
               items={[
@@ -44,6 +39,7 @@ const Layout = () => {
           current="PROJECT-A"
           className={styles.projectDropdown}
         />
+        <Avatar />
       </nav>
       <Outlet />
     </ProjectContext.Provider>
