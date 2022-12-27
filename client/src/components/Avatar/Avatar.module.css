@@ -1,0 +1,25 @@
+.container {
+  --size: 48px;
+  position: relative;
+  cursor: pointer;
+  height: var(--size);
+}
+
+.container > img {
+  width: var(--size);
+  min-width: var(--size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.container > span {
+  position: absolute;
+  width: var(--size);
+  aspect-ratio: 1;
+  top: 0;
+  left: 0;
+  font-weight: 800;
+  text-align: center;
+  line-height: var(--size);
+}
