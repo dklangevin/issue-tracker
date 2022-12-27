@@ -1,12 +1,19 @@
 import styles from './Pill.module.css';
+import classNames from 'classnames';
 
-export default function Pill({ children, color, selected, ...props }) {
+export default function Pill({
+  children,
+  priority,
+  color,
+  selected,
+  ...props
+}) {
   return (
     <div
-      className={styles.container}
+      className={classNames([styles.container, priority])}
       style={{
-        background: selected ? color : 'none',
-        border: `1px solid ${color}`,
+        background: selected ? null : 'none',
+        boxShadow: selected && '0 0 2px 2px #CCCCCC55',
       }}
       {...props}
     >
