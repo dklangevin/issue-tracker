@@ -19,8 +19,8 @@ const pool = new Pool({
   port: PORT,
   ssl: {
     rejectUnauthorized: false,
-    key: fs.readFileSync('key.pem'),
-    cert: fs.readFileSync('cert.pem'),
+    key: fs.readFileSync('./key.pem'),
+    cert: fs.readFileSync('./cert.pem'),
   },
 });
 
