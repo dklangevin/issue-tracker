@@ -41,7 +41,6 @@ const Layout = () => {
         />
         <Avatar />
       </nav>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2880px-Google_2015_logo.svg.png" />
       <Outlet />
     </ProjectContext.Provider>
 
