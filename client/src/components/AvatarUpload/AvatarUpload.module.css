@@ -1,0 +1,69 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+}
+
+.top {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.image {
+  width: 180px;
+  min-width: 180px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.top > span {
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.top > input {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.top ul {
+  /* background: var(--very-dark-grey); */
+  /* border-radius: 4px; */
+  /* padding: 8px; */
+  color: var(--grey-text);
+  font-style: italic;
+}
+
+.top ul li:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.selectFile {
+  max-width: 200px;
+  margin-bottom: 16px;
+}
+
+.selectFile svg {
+  width: 20px;
+  height: 20px;
+  margin-left: 12px;
+  fill: var(--text);
+}
+
+@media screen and (max-width: 699px) {
+  .top {
+    flex-direction: column;
+    align-items: center;
+  }
+  .top > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
