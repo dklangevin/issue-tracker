@@ -19,4 +19,11 @@ const getUser = async (req, res) => {
   }
 };
 
-module.exports = { getUsers, getUser };
+const saveAvatar = async (req, res) => {
+  const { id } = req.params;
+  const { path } = req.file;
+  await model.updateUserAvatar(id, path);
+  res.json(path);
+};
+
+module.exports = { getUsers, getUser, saveAvatar };

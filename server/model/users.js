@@ -12,4 +12,9 @@ const getUser = async (id) => {
   return rows[0];
 };
 
-module.exports = { getUsers, getUser };
+const updateUserAvatar = async (id, avatar) => {
+  const query = 'UPDATE users SET avatar=$1 WHERE id=$2';
+  const { rows } = await pool.query(query, [avatar, id]);
+};
+
+module.exports = { getUsers, getUser, updateUserAvatar };
