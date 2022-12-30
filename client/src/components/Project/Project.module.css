@@ -15,15 +15,15 @@
   width: 100%;
 }
 
-.container button {
-  max-width: 50%;
-  margin-left: auto;
-}
-
 .container textarea:not(:focus-visible) {
   background: none;
   border: none;
-  padding-left: 0;
+  /* padding-left: 0; */
+}
+
+.container textarea:focus-visible {
+  margin-left: -1px;
+  margin-top: -1px;
 }
 
 .content {
@@ -75,27 +75,6 @@
 .title:focus-visible {
   margin-block: -1px 7px;
   padding-left: 15px;
-}
-
-.wrapImage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-.wrapImage > div {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 2px solid white;
-  cursor: pointer;
-}
-
-.wrapImage > span {
-  font-size: 12px;
-  text-decoration: underline;
-  cursor: pointer;
 }
 
 .users {
@@ -193,12 +172,6 @@
 .placeholder {
   font-size: 14px;
   color: var(--grey-text);
-}
-
-.input {
-  visibility: hidden;
-  width: 0;
-  height: 0;
 }
 
 .plus {
