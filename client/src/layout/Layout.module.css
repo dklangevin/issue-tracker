@@ -1,48 +1,5 @@
-.layout {
+.content {
+  position: absolute;
+  top: var(--header-height);
   width: 100%;
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  padding: 16px;
-  border-bottom: 1px solid var(--middle-grey);
-}
-
-.layout > ul {
-  display: flex;
-  gap: 8px;
-  list-style: none;
-  padding: 0;
-  width: 100%;
-}
-
-.layout > ul > li > span {
-  display: flex;
-  align-items: center;
-  font-weight: 800;
-}
-
-.layout > ul > li > a {
-  font-weight: 900;
-  font-size: 18px;
-  text-decoration: none;
-  border-radius: 4px;
-  padding: 8px;
-  /* background: #54545433; */
-}
-
-.layout > ul > li > a:hover {
-  background: var(--middle-grey);
-}
-
-.projectDropdown {
-  margin-left: auto;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-}
-
-.logo > svg {
-  height: 50px;
 }
