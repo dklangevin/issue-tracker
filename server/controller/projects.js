@@ -32,7 +32,9 @@ const getProjectUsers = async (req, res) => {
 const createProject = async (req, res) => {
   try {
     const project = req.body;
-    await model.createProject(project);
+    const newProject = await model.createProject(project);
+
+    res.json(newProject);
   } catch (err) {
     console.error(err.message);
   }

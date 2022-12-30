@@ -1,4 +1,5 @@
 const pool = require('../database.js');
+const crypto = require('crypto');
 
 const getProjects = async (id) => {
   const query = 'SELECT * FROM projects';
@@ -22,24 +23,32 @@ const getProjectUsers = async (id) => {
   return rows;
 };
 
-const createProject = async (project) => {
-  const { name, description, users } = project;
+const createProject = async (body) => {
+  const { name, description, users } = body;
 
   const client = await pool.connect();
+
+  let project;
 
   try {
     await client.query('BEGIN');
 
+    const crypto = require('crypto');
+
+    const token = crypto.randomBytes(6).toString('base64');
+
     // create project
     const query =
-      'INSERT INTO projects(name, description) VALUES ($1, $2) RETURNING id';
-    const res = await client.query(query, [name, description]);
+      'INSERT INTO projects(token, name, description) VALUES ($1, $2, $3) RETURNING id, name, description';
+    const res = await client.query(query, [token, name, description]);
+
+    project = res.rows[0];
 
     // create invites for each invited user
     for (const userId of users) {
       const query =
         'INSERT INTO project_invites(project_id, user_id) VALUES ($1, $2)';
-      await client.query(query, [res.rows[0].id, userId]);
+      await client.query(query, [project.id, userId]);
     }
 
     await client.query('COMMIT');
@@ -49,6 +58,8 @@ const createProject = async (project) => {
   } finally {
     client.release();
   }
+
+  return project;
 };
 
 const updateProject = async (id, project) => {
