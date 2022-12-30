@@ -1,9 +1,14 @@
 /* Color palette: https://coolors.co/041b15-136f63-22aaa1-4ce0d2-84cae7 */
 
 :root {
+  /* sizes */
+  --max-mobile-width: 700px;
+  --header-height: 83px;
   --label-width: 100%;
   --select-width: 220px;
   --form-item-height: 30px;
+
+  /* colors */
   --border: #3a3a3a;
   --dark-jungle-green: #041b15ff;
   --pine-green: #136f63ff;
@@ -20,7 +25,6 @@
   --light-grey-text: #d0d0d0;
   --grey-text: #c0c0c0;
   --error: #dd2929;
-
   --low-priority: #8bc34a;
   --low-priority-background: #8bc34a33;
   --medium-priority: #fdd835;
@@ -29,10 +33,9 @@
   --high-priority-background: #ffa82633;
   --critical-priority: #ef5350;
   --critical-priority-background: #ef535033;
-
   --drag-box-shadow: #84cae799;
   --dropdown-background: #262626ee;
-  --modal-background: #26262699;
+  --modal-background: #262626cc;
 }
 
 .App {
@@ -63,6 +66,10 @@
 *:before,
 *:after {
   box-sizing: border-box;
+}
+
+html {
+  background: var(--very-very-dark-grey);
 }
 
 body {
@@ -171,4 +178,10 @@ select {
 .critical {
   background: var(--critical-priority-background);
   border: 1px solid rgb(239, 83, 80);
+}
+
+.flex-row {
+  display: flex;
+  gap: 16px;
+  width: 100%;
 }
