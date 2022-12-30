@@ -16,7 +16,10 @@ function Issue({ issue, isDragging, ...props }) {
       style={props.style}
     >
       <PriorityLabel priority={priority} />
-      <a href={`${project}-${id}`}>{`${project}-${id}`}</a>
+      <a
+        href={`${project}-${id}`}
+        className={styles.link}
+      >{`${project}-${id}`}</a>
       <span>{title}</span>
       <CategoryLabel name={category} color={props.color} />
       <Avatar />

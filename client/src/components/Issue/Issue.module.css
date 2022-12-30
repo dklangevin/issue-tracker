@@ -4,7 +4,7 @@
   gap: 8px;
   border: none;
   border-radius: 5px;
-  padding: 5px;
+  padding: 8px;
   background: rgba(70, 70, 70, 0.8);
   cursor: pointer;
   /* margin: 8px 0; */
@@ -20,14 +20,14 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  margin: 0 10px 0 5px;
+  margin: 0 8px 0 4px;
 }
 
 .container > span {
   font-weight: 800;
 }
 
-.container > a {
+.link {
   color: var(--light-grey-text);
 }
 
