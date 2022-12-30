@@ -1,7 +1,6 @@
 const simpleHash = (string) => {
   var hash = 0;
   for (var i = 0; i < string.length; i++) {
-    console.log(string.charCodeAt(i));
     hash = (hash << 5) - hash + string.charCodeAt(i);
   }
   return hash;

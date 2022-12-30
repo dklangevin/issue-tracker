@@ -1,14 +1,13 @@
 import { useState } from 'react';
-import useIssues from '../../data/issues';
-import { Plus } from '../../icons';
+import AddIssue from '../../components/AddIssue/AddIssue';
 import Button from '../../components/Button/Button';
 import DragAndDropList from '../../components/DragAndDropList/DragAndDropList';
+import useIssues from '../../data/issues';
+import { Plus } from '../../icons';
 import styles from './Issues.module.css';
-import AddIssue from '../../components/AddIssue/AddIssue';
 
 function Issues() {
   const [hidden, setHidden] = useState(true);
-
   const issues = useIssues();
 
   async function handleAdd() {

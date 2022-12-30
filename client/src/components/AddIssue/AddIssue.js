@@ -41,11 +41,7 @@ function AddIssue({ projectId, hidden, setHidden, ...props }) {
   }
 
   return (
-    <Modal
-      hidden={hidden}
-      setHidden={setHidden}
-      className={classNames('add-issue')}
-    >
+    <Modal hidden={hidden} setHidden={setHidden}>
       <section className={styles.container}>
         <h1 className="title">Add Issue</h1>
         <form onSubmit={onAddIssue}>

@@ -5,6 +5,7 @@ import './DragAndDropList.css';
 
 function DragAndDropList(props) {
   const [items, setItems] = useState([]);
+
   useEffect(() => {
     setItems(props.items);
   }, [props.items]);

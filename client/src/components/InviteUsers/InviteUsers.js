@@ -21,7 +21,6 @@ export function InviteUsers({ addedUsers, setAddedUsers }) {
     [users, addedUsers]
   );
 
-  console.log(addedUsers);
   return (
     <div className={styles.container}>
       <Search
