@@ -4,7 +4,7 @@ import Avatar from '../components/Avatar/Avatar';
 // import { Logo } from '../icons';
 // import Button from '../components/Button/Button';
 // import useProjects from '../data/projects';
-import { Menu, Plus } from '../icons';
+import { Menu } from '../icons';
 import { Logo2 } from '../logo';
 import styles from './MobileNav.module.css';
 

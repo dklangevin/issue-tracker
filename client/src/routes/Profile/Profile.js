@@ -1,44 +1,23 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
+import EditAvatarModal from '../../components/EditAvatarModal/EditAvatarModal';
 import Input from '../../components/Input/Input';
 import useProjects from '../../data/projects';
 import useUser from '../../data/user';
-import styles from './Profile.module.css';
 import { generateLinearGradientBackground } from '../../util';
-import AvatarUpload from '../../components/AvatarUpload/AvatarUpload';
-import EditAvatarModal from '../../components/EditAvatarModal/EditAvatarModal';
-import Button from '../../components/Button/Button';
+import styles from './Profile.module.css';
 
 export default function Profile(props) {
-  const [file, setFile] = useState();
-  const [, setPreview] = useState();
   const [modalHidden, setModalHidden] = useState(true);
-  const ref = useRef();
-
   const projects = useProjects();
-
   const user = useUser(1);
 
   const { id, first_name: first, last_name: last, avatar } = user || {};
-
-  useEffect(() => {
-    if (!file) {
-      setPreview();
-      return;
-    }
-
-    const objectUrl = URL.createObjectURL(file);
-    setPreview(objectUrl);
-
-    return () => URL.revokeObjectURL(objectUrl);
-  }, [file]);
 
   const initials = first && last ? `${first[0]}${last[0]}` : '';
 
   return (
     <div className={styles.container} {...props}>
       <section className={styles.details}>
-        {/* <AvatarUpload image={avatar} seed={`${id}-${first}`} /> */}
-        {/* <Button onClick={() => setModalHidden(false)}>Edit Avatar</Button> */}
         <div className={styles.wrapImage}>
           {avatar ? (
             <img

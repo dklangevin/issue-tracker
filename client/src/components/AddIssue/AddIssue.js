@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { useState } from 'react';
 import { PRIORITIES } from '../../constants';
 import { createIssue } from '../../data/issues';
