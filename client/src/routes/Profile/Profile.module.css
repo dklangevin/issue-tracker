@@ -5,32 +5,22 @@
   margin: auto;
   display: flex;
   flex-direction: column;
+  gap: 32px;
 }
 
 .container > div {
   display: flex;
 }
 
-.container form {
+.details > form {
   width: 100%;
 }
-
-.container button {
-  max-width: 50%;
-  margin-left: auto;
-}
-
+/* 
 .container textarea:not(:focus-visible) {
   background: none;
   border: none;
   padding-left: 0;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
+} */
 
 .details {
   display: flex;
@@ -79,7 +69,8 @@
   gap: 8px;
 }
 
-.wrapImage > div {
+.wrapImage > div,
+.wrapImage > img {
   width: 120px;
   height: 120px;
   border-radius: 50%;
