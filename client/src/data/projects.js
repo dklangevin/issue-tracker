@@ -6,7 +6,7 @@ const listProjects = async () => {
 };
 
 export const createProject = async (body) => {
-  await api.projects.create(body);
+  return api.projects.create(body);
 };
 
 const useProjects = () => {

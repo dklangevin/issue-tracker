@@ -5,6 +5,10 @@ const fetchUser = async (id) => {
   return api.users.fetch(id).then((res) => res.data);
 };
 
+export const uploadAvatar = async (id, body) => {
+  return api.users.upload(id, body);
+};
+
 const useUser = (id) => {
   const [user, setUser] = useState();
   useEffect(() => {
