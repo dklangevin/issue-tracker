@@ -8,6 +8,7 @@ const api = axios.create({
 api.users = {
   list: async () => api.get('/users'),
   fetch: async (id) => api.get(`/users/${id}`),
+  upload: async (id, body) => api.post(`/users/${id}/upload`, body),
 };
 
 api.issues = {
