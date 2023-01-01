@@ -149,3 +149,39 @@ export const Menu = (props) => (
     <path fill="currentColor" d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z" />
   </svg>
 );
+
+export const IssuesIcon = (props) => (
+  <svg viewBox="0 0 24 24" {...props}>
+    <path
+      fill="currentColor"
+      d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2M7 7h2v2H7V7m0 4h2v2H7v-2m0 4h2v2H7v-2m10 2h-6v-2h6v2m0-4h-6v-2h6v2m0-4h-6V7h6v2Z"
+    />
+  </svg>
+);
+
+export const CategoriesIcon = (props) => (
+  <svg style={{ padding: 2 }} viewBox="0 0 24 24" {...props}>
+    <path
+      fill="currentColor"
+      d="M21 3c.53 0 1.04.21 1.41.59.38.37.59.88.59 1.41v10c0 .53-.21 1.04-.59 1.41-.37.38-.88.59-1.41.59H7c-.53 0-1.04-.21-1.41-.59C5.21 16.04 5 15.53 5 15V5c0-.53.21-1.04.59-1.41C5.96 3.21 6.47 3 7 3h14M3 19h15v2H3c-.53 0-1.04-.21-1.41-.59C1.21 20.04 1 19.53 1 19V8h2v11Z"
+    />
+  </svg>
+);
+
+export const TeamIcon = (props) => (
+  <svg viewBox="0 0 24 24" {...props}>
+    <path
+      fill="currentColor"
+      d="M16 17v2H2v-2s0-4 7-4 7 4 7 4m-3.5-9.5A3.5 3.5 0 1 0 9 11a3.5 3.5 0 0 0 3.5-3.5m3.44 5.5A5.32 5.32 0 0 1 18 17v2h4v-2s0-3.63-6.06-4M15 4a3.39 3.39 0 0 0-1.93.59 5 5 0 0 1 0 5.82A3.39 3.39 0 0 0 15 11a3.5 3.5 0 0 0 0-7Z"
+    />
+  </svg>
+);
+
+export const LeftArrowIcon = (props) => (
+  <svg viewBox="0 0 24 24" {...props}>
+    <path
+      fill="currentColor"
+      d="M15.41 16.58 10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.42Z"
+    />
+  </svg>
+);
