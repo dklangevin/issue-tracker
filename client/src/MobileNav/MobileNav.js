@@ -8,12 +8,15 @@ import { Menu } from '../icons';
 import { Logo2 } from '../logo';
 import styles from './MobileNav.module.css';
 
-export default function MobileNav() {
+export default function MobileNav({ setSidebarOpen }) {
   // const projects = useProjects();
 
   return (
     <nav className={styles.container}>
-      <Menu class={styles.menu} />
+      <Menu
+        class={styles.menu}
+        onClick={() => setSidebarOpen((prev) => !prev)}
+      />
       <Link to="/" className={styles.logo}>
         <Logo2 />
       </Link>

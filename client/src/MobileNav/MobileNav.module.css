@@ -2,6 +2,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  height: var(--header-height);
   display: flex;
   gap: 16px;
   align-items: center;
@@ -16,6 +17,7 @@
   height: 40px;
   min-width: 40px;
   min-height: 40px;
+  cursor: pointer;
 }
 
 .container > ul {
@@ -48,15 +50,6 @@
 .projectDropdown {
   margin-left: auto;
 }
-
-/* .logo {
-  display: flex;
-  align-items: center;
-}
-
-.logo > svg {
-  height: 50px;
-} */
 
 .logo {
   display: flex;

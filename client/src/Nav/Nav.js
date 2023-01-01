@@ -30,6 +30,9 @@ export default function Nav() {
         <li>
           <Link to="/categories">Categories</Link>
         </li>
+        <li>
+          <Link to="/team">Team</Link>
+        </li>
       </ul>
       {projects.length ? (
         <ProjectDropdown
