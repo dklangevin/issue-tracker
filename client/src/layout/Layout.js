@@ -23,15 +23,15 @@ const Layout = () => {
             <div className={styles.sidebar}>
               <LeftArrowIcon onClick={() => setSidebarOpen(false)} />
               <ul>
-                <li>
+                <li onClick={() => setSidebarOpen(false)}>
                   <IssuesIcon />
                   <Link to="/issues">Issues</Link>
                 </li>
-                <li>
+                <li onClick={() => setSidebarOpen(false)}>
                   <CategoriesIcon />
                   <Link to="/categories">Categories</Link>
                 </li>
-                <li>
+                <li onClick={() => setSidebarOpen(false)}>
                   <TeamIcon />
                   <Link to="/team">Team</Link>
                 </li>
