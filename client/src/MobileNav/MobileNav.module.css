@@ -1,5 +1,5 @@
 .container {
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%;
   height: var(--header-height);
@@ -81,7 +81,7 @@
   width: 200px;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 750px) {
   .container {
     display: none;
   }

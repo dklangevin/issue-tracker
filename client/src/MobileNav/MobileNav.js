@@ -14,7 +14,7 @@ export default function MobileNav({ setSidebarOpen }) {
   return (
     <nav className={styles.container}>
       <Menu
-        class={styles.menu}
+        className={styles.menu}
         onClick={() => setSidebarOpen((prev) => !prev)}
       />
       <Link to="/" className={styles.logo}>

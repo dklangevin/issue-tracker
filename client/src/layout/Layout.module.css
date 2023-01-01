@@ -26,7 +26,7 @@
 
 .content {
   position: relative;
-  /* top: var(--header-height); */
+  top: var(--header-height);
   width: 100%;
   min-height: calc(100vh - var(--header-height));
   /* display: flex; */

@@ -1,5 +1,5 @@
 .container {
-  padding: 32px;
+  padding-block: 16px;
   border-radius: 5px;
   margin: 0 auto;
   width: 100%;
@@ -11,7 +11,11 @@
 
 .container > button {
   width: fit-content;
-  margin: 16px 0 0 auto;
+  margin: 16px 16px 0 auto;
+}
+
+.issues {
+  padding-inline: 16px;
 }
 
 .plus {
@@ -20,4 +24,14 @@
   min-width: 20px;
   min-height: 20px;
   margin: 0 -4px 0 4px;
+}
+
+.title {
+  margin: 0 0 8px 16px;
+}
+
+@media screen and (max-width: 400px) {
+  .issues {
+    padding-inline: 0;
+  }
 }

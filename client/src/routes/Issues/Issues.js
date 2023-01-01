@@ -16,8 +16,10 @@ function Issues() {
 
   return (
     <div className={styles.container}>
-      <h3 className="title">Active Issues</h3>
-      <DragAndDropList items={issues}></DragAndDropList>
+      <h3 className={styles.title}>Active Issues</h3>
+      <div className={styles.issues}>
+        <DragAndDropList items={issues}></DragAndDropList>
+      </div>
       <Button onClick={() => setHidden(false)}>
         Create Issue <Plus className={styles.plus} />
       </Button>
