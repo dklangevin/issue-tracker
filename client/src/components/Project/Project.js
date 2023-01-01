@@ -8,7 +8,7 @@ import { createProject } from '../../data/projects';
 import useProjectUsers from '../../data/projects/users';
 import useProjectContext from '../../hooks/projectContext';
 import { Close } from '../../icons';
-import AvatarUpload from '../AvatarUpload/AvatarUpload';
+import { generateLinearGradientBackground } from '../../util';
 import Button from '../Button/Button';
 import { InviteUsers } from '../InviteUsers/InviteUsers';
 import styles from './Project.module.css';
@@ -25,9 +25,10 @@ export default function Project({ create = false, ...props }) {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [addedUsers, setAddedUsers] = useState([]);
+  const [, setModalHidden] = useState(false);
   const navigate = useNavigate();
 
-  const { token = '', name = '', description = '' } = project || {};
+  const { token = '', name = '', description = '', image } = project || {};
 
   const validators = {
     name: {
@@ -101,7 +102,29 @@ export default function Project({ create = false, ...props }) {
         )}
         <div className={styles.content}>
           <div className={styles.details}>
-            <AvatarUpload seed={token} />
+            <div className={styles.wrapImage}>
+              {image ? (
+                <img
+                  src={image}
+                  alt="project-image"
+                  onClick={() => setModalHidden(false)}
+                />
+              ) : (
+                <>
+                  <div
+                    style={{
+                      background: generateLinearGradientBackground(token),
+                    }}
+                  />
+                </>
+              )}
+              <span
+                onClick={() => setModalHidden(false)}
+                className={styles.changeImage}
+              >
+                Change Image
+              </span>
+            </div>
             {create ? (
               <TextArea
                 placeholder="Enter project description"
