@@ -1,5 +1,85 @@
-.content {
+.container {
   position: absolute;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.container > div {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.content {
+  position: relative;
   top: var(--header-height);
+  width: 100vw;
+  height: calc(100vh - var(--header-height));
+  display: flex;
+}
+
+.sidebar {
+  width: 80vw;
+  min-width: 80vw;
+  height: 100vh;
+  background: var(--dark-grey);
+}
+
+.container > div:not(.sidebar) {
+  position: relative;
   width: 100%;
+  height: 100%;
+}
+
+.sidebar > ul {
+  margin-top: 8px;
+  padding: 16px;
+}
+
+.sidebar > ul > li {
+  padding: 12px;
+  margin: 4px;
+  font-weight: 900;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.sidebar > ul > li:hover {
+  filter: brightness(75%);
+}
+
+.sidebar > ul > li:not(:last-child) {
+  /* border-bottom: 1px solid var(--middle-grey); */
+}
+
+.sidebar > ul > li > svg {
+  margin-bottom: -2px;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  color: var(--turquoise);
+}
+
+.sidebar > svg {
+  margin-bottom: -2px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  margin: 16px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar {
+    width: 100vw;
+    min-width: 100vw;
+  }
 }
