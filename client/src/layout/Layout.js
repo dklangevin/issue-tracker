@@ -38,7 +38,7 @@ const Layout = () => {
               </ul>
             </div>
           )}
-          <div className={sidebarOpen ? styles.blur : null}>
+          <div className={styles.main}>
             <Nav />
             <MobileNav setSidebarOpen={setSidebarOpen} />
             <div className={styles.content}>

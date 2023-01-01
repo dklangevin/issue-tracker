@@ -70,6 +70,7 @@
 
 html {
   background: var(--very-very-dark-grey);
+  /* min-height: calc(100% + env(safe-area-inset-top)); */
 }
 
 body {

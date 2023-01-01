@@ -1,22 +1,14 @@
 .container {
-  position: absolute;
-  width: 100vw;
   overflow-x: hidden;
+  width: 100vw;
 }
 
 .container > div {
   display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.content {
   position: relative;
-  top: var(--header-height);
-  width: 100vw;
-  min-height: calc(100vh - var(--header-height));
-  /* display: flex; */
+  width: 100%;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 .sidebar {
@@ -26,10 +18,18 @@
   background: var(--dark-grey);
 }
 
-.container > div:not(.sidebar) {
+.main {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - var(--header-height));
+}
+
+.content {
+  position: relative;
+  /* top: var(--header-height); */
+  width: 100%;
+  min-height: calc(100vh - var(--header-height));
+  /* display: flex; */
 }
 
 .sidebar > ul {
