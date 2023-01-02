@@ -181,7 +181,7 @@ export default function Project({ create = false, ...props }) {
           </div>
           {create && (
             // <Button type="submit" disabled={!isValid()} loading={loading}>
-            <div className="flex-row">
+            <div className={styles.buttons}>
               <Button to="/" appearance="secondary">
                 Cancel
               </Button>
