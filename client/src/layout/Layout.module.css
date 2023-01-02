@@ -1,9 +1,6 @@
 .container {
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   width: 100vw;
-}
-
-.container > div {
   display: flex;
   position: relative;
   width: 100%;
@@ -11,7 +8,15 @@
     env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
-.sidebar {
+/* .container > div {
+  display: flex;
+  position: relative;
+  width: 100%;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
+} */
+
+/* .sidebar {
   width: 80vw;
   min-width: 80vw;
   min-height: 100vh;
@@ -22,16 +27,16 @@
   position: relative;
   width: 100%;
   min-height: calc(100vh - var(--header-height));
-}
+} */
 
 .content {
   position: relative;
   top: var(--header-height);
   width: 100%;
-  min-height: calc(100vh - var(--header-height));
+  min-height: calc(200vh - var(--header-height));
   /* display: flex; */
 }
-
+/* 
 .sidebar > ul {
   margin-top: 8px;
   padding: 16px;
@@ -55,7 +60,7 @@
 }
 
 .sidebar > ul > li:not(:last-child) {
-  /* border-bottom: 1px solid var(--middle-grey); */
+  border-bottom: 1px solid var(--middle-grey);
 }
 
 .sidebar > ul > li > svg {
@@ -82,4 +87,4 @@
     width: 100vw;
     min-width: 100vw;
   }
-}
+} */
