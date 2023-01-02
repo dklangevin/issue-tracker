@@ -44,7 +44,7 @@ export default function Nav() {
           Create New Project <Plus className={styles.plus} />
         </Button>
       )}
-      <Avatar size={48} />
+      <Avatar size={48} className={styles.avatar} />
     </nav>
   );
 }
