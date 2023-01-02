@@ -122,15 +122,26 @@ label {
   padding: 0;
 }
 
+input {
+  font-family: inherit;
+}
+
 a {
   text-decoration: none;
   color: inherit;
 }
 
 *:focus-visible {
-  outline: 1px solid grey;
-  border-radius: 4px;
+  /* outline: 1px solid grey !important; */
+  outline: none !important;
+  /* border: 2px solid grey !important; */
+  /* border-radius: 4px !important; */
+  box-shadow: 0 0 0 1px var(--turquoise);
 }
+
+/* *:focus {
+  outline: 0;
+} */
 
 select {
   appearance: none;
