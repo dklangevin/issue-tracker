@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { IssuesIcon, CategoriesIcon, TeamIcon } from '../icons';
 import styles from './BottomNav.module.css';
-import { useBottomNavHidden } from '../hooks/scrollPosition';
+import { useBottomNavHidden } from '../hooks/scroll';
 
 export default function BottomNav(props) {
   const hidden = useBottomNavHidden();
