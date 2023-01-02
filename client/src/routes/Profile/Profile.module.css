@@ -159,7 +159,7 @@
   gap: 8px;
 }
 
-.users > li {
+.users li {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -171,7 +171,11 @@
   cursor: pointer;
 }
 
-.users > li span:not(.role) {
+.users li span:not(.role) {
+  width: 100%;
+}
+
+.users a {
   width: 100%;
 }
 
@@ -207,4 +211,15 @@
 
 .heading {
   margin-bottom: 8px;
+}
+
+@media screen and (width < 750px) {
+  .details {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .details input {
+    text-align: center;
+  }
 }
