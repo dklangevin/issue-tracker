@@ -59,8 +59,8 @@
 }
 
 .title {
-  font-size: 24px;
-  font-weight: 800;
+  font-size: 24px !important;
+  font-weight: 800 !important;
 }
 
 .title:not(:focus-visible) {
@@ -186,7 +186,6 @@
   margin-bottom: 8px;
 }
 
-
 .wrapImage {
   position: relative;
   display: flex;
@@ -214,4 +213,15 @@
   font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+@media screen and (width < 750px) {
+  .buttons {
+    flex-direction: column-reverse;
+  }
 }
