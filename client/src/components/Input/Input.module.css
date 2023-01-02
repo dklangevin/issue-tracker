@@ -9,6 +9,8 @@
   background: var(--input-background);
   color: var(--text);
   border: 1px solid var(--border);
+  appearance: none;
+  font-size: 16px;
 }
 
 .container > label > span {
