@@ -4,19 +4,18 @@ import Avatar from '../components/Avatar/Avatar';
 // import { Logo } from '../icons';
 // import Button from '../components/Button/Button';
 // import useProjects from '../data/projects';
-import { Menu } from '../icons';
 import { Logo2 } from '../logo';
 import styles from './MobileNav.module.css';
 
-export default function MobileNav({ setSidebarOpen }) {
+export default function MobileNav() {
   // const projects = useProjects();
 
   return (
     <nav className={styles.container}>
-      <Menu
+      {/* <Menu
         className={styles.menu}
         onClick={() => setSidebarOpen((prev) => !prev)}
-      />
+      /> */}
       <Link to="/" className={styles.logo}>
         <Logo2 />
       </Link>
