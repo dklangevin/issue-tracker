@@ -2,7 +2,7 @@ const axios = require('axios');
 
 const api = axios.create({
   baseURL: 'https://stats.nba.com/stats/',
-  timeout: 1000,
+  timeout: 6000,
   headers: {
     Referer: 'https://www.nba.com/',
     Origin: 'https://www.nba.com',
@@ -32,13 +32,14 @@ async function listTeams() {
     .then((res) => {
       const data = res.data.resultSets[0].rowSet;
       const rows = data.map((row) => ({ id: row[2], name: row[4] }));
+      console.log('teams fetch success');
       return rows;
     })
     .catch((err) => {
       console.log(err);
       console.log(err.request);
+      console.log('teams fetch error');
     });
-  console.log('teams fetch success');
   return rows;
 }
 
